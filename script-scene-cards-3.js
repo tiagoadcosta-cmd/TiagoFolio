@@ -15,17 +15,22 @@ const carEnd = 80;
 let scrollStopTimeout = null;
 let navScrollTimeout = null;
 let lastScrollDirection = 'down';
-let isScrolling = false;
 let isNavScrolling = false;
 let isInitialAnimation = true;
 let carScaleX = 1;
 
+// Carro: GIF só quando existe movimento recente.
+let carMotionTimeout = null;
+let carShouldBeGif = false;
+let lastCarInputTs = 0;
+
 function setCarState(state){
   if(!carImage) return;
-  
+
   let imageSrc = './car-on.png';
   let isReversed = false;
-  
+
+  // Mantemos o sentido (reverse) separado da lógica GIF/PNG.
   if(state === 'scrolling-down') {
     imageSrc = './car-on.gif';
   } else if(state === 'scrolling-up') {
@@ -35,59 +40,140 @@ function setCarState(state){
     imageSrc = './car-on.png';
     isReversed = true;
   }
-  
+
   carScaleX = isReversed ? -1 : 1;
-  if(carWrapper) carWrapper.style.transform=`scaleX(${carScaleX})`;
+  if(carWrapper) carWrapper.style.transform = `scaleX(${carScaleX})`;
 
   const currentSrc = carImage.getAttribute('src') || '';
-  if(!currentSrc.endsWith(imageSrc.replace('./',''))){
+  const targetFile = imageSrc.replace('./','');
+  if(!currentSrc.endsWith(targetFile)){
     carImage.src = `${imageSrc}?v=${Date.now()}`;
   } else {
     carImage.src = imageSrc;
   }
 }
+
+function setCarMotion(isMoving, direction){
+  if(!carImage) return;
+
+  // Atualiza direção (scaleX) + marca GIF/PNG.
+  const nextState = isMoving
+    ? (direction === 'up' ? 'scrolling-up' : 'scrolling-down')
+    : (direction === 'up' ? 'stopped-reversed' : 'stopped');
+
+  if(isMoving){
+    carShouldBeGif = true;
+  } else {
+    carShouldBeGif = false;
+  }
+
+  // Semântica: sempre que há transporte real da página, põe GIF.
+  setCarState(nextState);
+}
+
+function markCarInput(direction){
+  lastCarInputTs = Date.now();
+
+  // Sempre que há input de movimento, vira GIF e renova janela.
+  if(carMotionTimeout) clearTimeout(carMotionTimeout);
+  setCarMotion(true, direction);
+
+  carMotionTimeout = setTimeout(() => {
+    // Se passado tempo suficiente desde o último input, volta para PNG.
+    const now = Date.now();
+    const idleFor = now - lastCarInputTs;
+    if(idleFor >= 400){
+      setCarMotion(false, direction);
+    }
+  }, 450);
+}
+
 function setActive(hash){navLinks.forEach(link=>link.classList.toggle('is-active',link.getAttribute('href')===hash))}
 function updateCards(activeId){panels.forEach(panel=>{const card=panel.querySelector('.road-card'); if(!card) return; card.classList.toggle('is-visible', panel.id===activeId)})}
 function sync(activeId){setActive(`#${activeId}`); updateCards(activeId)}
 function getScrollProgress(){const maxScroll=Math.max(1,document.body.scrollHeight-window.innerHeight); return window.scrollY/maxScroll}
 function updateRoadMovement(){}
 function updateCarPosition(){if(!carWrapper || isInitialAnimation) return; const progress=getScrollProgress(); const left=carStart + (carEnd-carStart)*progress; window.gsap.to(carWrapper, {left: `${left}vw`, duration: 1.5, ease: 'power2.out'}); carWrapper.style.transform=`scaleX(${carScaleX})`}
-function buildHorizontalScroll(){if(!window.gsap||!window.ScrollTrigger||window.innerWidth<=900||!track){if(horizontalScrollTrigger){horizontalScrollTrigger.kill(); horizontalScrollTrigger=null} if(window.gsap && track) window.gsap.set(track,{clearProps:'transform'}); return} window.gsap.registerPlugin(window.ScrollTrigger); if(horizontalScrollTrigger){horizontalScrollTrigger.kill(); horizontalScrollTrigger=null; window.gsap.set(track,{clearProps:'all'})} const scrollDistance=track.scrollWidth-window.innerWidth; if(scrollDistance<=0) return; horizontalScrollTrigger=window.gsap.to(track,{x:-scrollDistance,ease:'none',scrollTrigger:{trigger:'.experience-shell',start:'top top',end:()=>`+=${scrollDistance}`,scrub:1,pin:true,anticipatePin:1,invalidateOnRefresh:true,onUpdate:(self)=>{const index=Math.round(self.progress*(panels.length-1)); const active=panels[index]; if(active?.id) sync(active.id); setCarState(self.direction===-1?'scrolling-up':'scrolling-down'); updateRoadMovement(); updateCarPosition()}}}).scrollTrigger}
-function mobileFallback(){if(mobileObserver){mobileObserver.disconnect(); mobileObserver=null} if(window.innerWidth>900) return; mobileObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting&&entry.target.id) sync(entry.target.id)})},{threshold:.4}); panels.forEach(panel=>mobileObserver.observe(panel))}
+
+function buildHorizontalScroll(){
+  if(!window.gsap||!window.ScrollTrigger||window.innerWidth<=900||!track){
+    if(horizontalScrollTrigger){horizontalScrollTrigger.kill(); horizontalScrollTrigger=null}
+    if(window.gsap && track) window.gsap.set(track,{clearProps:'transform'});
+    return
+  }
+
+  window.gsap.registerPlugin(window.ScrollTrigger);
+
+  if(horizontalScrollTrigger){
+    horizontalScrollTrigger.kill();
+    horizontalScrollTrigger=null;
+    window.gsap.set(track,{clearProps:'all'})
+  }
+
+  const scrollDistance=track.scrollWidth-window.innerWidth;
+  if(scrollDistance<=0) return;
+
+  horizontalScrollTrigger=window.gsap.to(track,{
+    x:-scrollDistance,
+    ease:'none',
+    scrollTrigger:{
+      trigger:'.experience-shell',
+      start:'top top',
+      end:()=>`+=${scrollDistance}`,
+      scrub:1,
+      pin:true,
+      anticipatePin:1,
+      invalidateOnRefresh:true,
+      onUpdate:(self)=>{
+        const index=Math.round(self.progress*(panels.length-1));
+        const active=panels[index];
+        if(active?.id) sync(active.id);
+
+        const dir = self.direction===-1 ? 'up' : 'down';
+        markCarInput(dir);
+
+        updateRoadMovement();
+        updateCarPosition();
+      }
+    }
+  }).scrollTrigger
+}
+
+function mobileFallback(){
+  if(mobileObserver){
+    mobileObserver.disconnect();
+    mobileObserver=null;
+  }
+  if(window.innerWidth>900) return;
+  mobileObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting&&entry.target.id) sync(entry.target.id);
+    })
+  },{threshold:.4});
+  panels.forEach(panel=>mobileObserver.observe(panel))
+}
 
 // ===== Percurso: controlo apenas por clique (sem abrir/fechar por scroll) =====
 
 window.addEventListener('scroll',()=>{
   const currentScrollY = window.scrollY;
   const deltaY = currentScrollY - lastScrollY;
-  
-  // Determinar estado do carro com base no scroll
+
+  // Determinar direção do movimento real
   if(!isNavScrolling){
     if(deltaY > 0) {
-      // Scroll down
-      setCarState('scrolling-down');
       lastScrollDirection = 'down';
+      markCarInput('down');
     } else if(deltaY < 0) {
-      // Scroll up
-      setCarState('scrolling-up');
       lastScrollDirection = 'up';
+      markCarInput('up');
     }
   }
-  
-  // Limpar timeout anterior
-  if(scrollStopTimeout) clearTimeout(scrollStopTimeout);
-  
-  // Definir novo timeout para detectar quando o scroll para
-  scrollStopTimeout = setTimeout(() => {
-    if(isNavScrolling) return;
-    const stoppedState = lastScrollDirection === 'up' ? 'stopped-reversed' : 'stopped';
-    setCarState(stoppedState);
-    isScrolling = false;
-  }, 200);
-  
-  updateCarPosition(); 
+
+  updateCarPosition();
   lastScrollY = currentScrollY;
 },{passive:true});
+
 window.addEventListener('load',()=>{
   carWrapper.style.opacity='0';
   carWrapper.style.left='-30vw';
@@ -139,12 +225,33 @@ function scrollToPanel(id){
   const panel = document.getElementById(id);
   if(!panel) return;
 
+  // bottom-nav / scroll programático conta como movimento: garante GIF durante o transporte
+  const directionHint = (() => {
+    const currentPanelId = getCurrentPanelId();
+    if(currentPanelId === id) return null;
+
+    if(window.innerWidth > 900 && horizontalScrollTrigger && panels.length){
+      const index = panels.findIndex(p => p.id === id);
+      if(index < 0) return null;
+      const progress = index / Math.max(1, panels.length - 1);
+      return progress < (horizontalScrollTrigger.progress || 0) ? 'up' : 'down';
+    }
+
+    const rect = panel.getBoundingClientRect();
+    return rect.top < 0 ? 'up' : 'down';
+  })();
+
+  if(directionHint){
+    markCarInput(directionHint);
+  }
+
   const currentPanelId = getCurrentPanelId();
   if(currentPanelId === id){
     const stoppedState = lastScrollDirection === 'up' ? 'stopped-reversed' : 'stopped';
     setCarState(stoppedState);
     return;
   }
+
 
   if(window.innerWidth > 900 && track && window.gsap && window.ScrollTrigger && horizontalScrollTrigger){
     const index = panels.findIndex(p => p.id === id);
@@ -348,10 +455,11 @@ function applyProjetoState(){
   const category = projetoState.category;
   const activeIndex = projetoState.indexByCategory[category] ?? 0;
 
-  // Assegurar que o card direito mostra só o que está aberto
+  // Assegurar que os botões (foto/video/ia) no card esquerdo só têm um activo
   projetoPoints.forEach(point => {
     point.classList.toggle('is-active', point.getAttribute('data-projeto-target') === category);
   });
+
 
 
   // Texto geral (foto/vídeo/IA) permanece no card do lado esquerdo
@@ -451,7 +559,10 @@ function setProjetoCategory(category){
 async function initFotosFromManifest(){
   const placeholder = document.getElementById('projeto-fotos-placeholder');
   const summariesWrap = document.getElementById('projeto-fotos-summaries');
-  if(!placeholder || !summariesWrap) return;
+
+  // As fotos têm de ser injetadas mesmo que não exista o wrap de summaries.
+  if(!placeholder) return;
+
 
   const particularWrap = projetoParticularFotosSummariesWrap;
   // particularWrap deve existir para receber descrições específicas (foto aberta)
@@ -478,13 +589,14 @@ async function initFotosFromManifest(){
 
     // limpar
     placeholder.replaceChildren();
-    summariesWrap.replaceChildren();
-    particularWrap.replaceChildren();
+    summariesWrap?.replaceChildren();
+    particularWrap?.replaceChildren();
+
 
     normalizedImages.forEach((item, idx) => {
       const file = item?.file;
       if(!file) return;
-      const src = `${basePath}${file}`;
+      const src = new URL(`${basePath}${file}`, window.location.href).href;
 
       const figure = document.createElement('figure');
       figure.className = 'projetos-media-item';
@@ -517,8 +629,10 @@ async function initFotosFromManifest(){
         p.appendChild(desc);
       }
 
-      // descrição particular da foto (lado esquerdo por baixo das descrições gerais)
-      if(canRenderParticular) particularWrap.appendChild(p);
+      // descrição particular da foto removida (agora fica apenas a descrição geral do botão Foto/Video/IA)
+      // if(canRenderParticular) particularWrap.appendChild(p);
+
+
     });
 
     // Recalcular coleções depois de injetar os elements
@@ -536,8 +650,20 @@ async function initFotosFromManifest(){
       projetoState.indexByCategory.foto = 0;
     }
 
-    // aplicar estado corrente (para marcar is-active)
-    applyProjetoState();
+// aplicar estado corrente (para marcar is-active)
+    // (se a categoria inicial não bater com a quantidade injetada, o CSS pode manter tudo invisível)
+    if (!getProjetoItemsByCategory('foto').length) {
+      // nada a mostrar
+    } else {
+      const fotoItems = getProjetoItemsByCategory('foto');
+      const maxFotoIndex = fotoItems.length - 1;
+      projetoState.category = 'foto';
+      projetoState.indexByCategory.foto = Math.min(
+        maxFotoIndex,
+        Math.max(0, projetoState.indexByCategory.foto ?? 0)
+      );
+      applyProjetoState();
+    }
   }catch(e){
     // silencioso: deixa layout original (se existir) ou vazio
   }

@@ -1,0 +1,8 @@
+- [x] Identificar painel atual de forma robusta para desktop/mobile
+- [x] Impedir estado "scrolling" ao clicar no botão da secção já ativa
+- [x] Garantir estado final parado (PNG) quando não há deslocação
+- [ ] Validar que o comportamento existente de navegação não foi alterado
+- [x] Ajustar #projetos para fundo #000000
+- [x] Remover estilo visual dos cards de #projetos (sem borda/fundo)
+- [x] Refatorar #contacto com título/subtítulo no mesmo padrão das outras secções
+- [x] Criar card de contacto estilo #sobre com 3 botões no fundo (instagram/linkedin/cv)

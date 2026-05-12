@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portefólio Tiago</title>
-  <meta name="description" content="Portefólio interativo com scroll horizontal e cards sobre a estrada.">
+  <title>Portefólio Tiago - Sobre</title>
+  <meta name="description" content="Portefólio Tiago - Sobre">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <div class="page-background" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a href="#sobre" class="brand-mark" aria-label="Portefólio Tiago" data-fullname="Tiago Duarte Costa">Tiago Duarte Costa</a>
+    <a href="./sobre.html" class="brand-mark" aria-label="Portefólio Tiago" data-fullname="Tiago Duarte Costa">Tiago Duarte Costa</a>
   </header>
 
   <main id="mainContent" class="experience-shell">
@@ -24,206 +24,31 @@
 
       <div class="car-lane" aria-hidden="true">
         <div id="carWrapper" class="car-wrapper">
-          <img id="carImage" class="car-image" src="./car-on.png" alt="Carro">
+          <img id="carImage" class="car-image" src="./car-on.gif" alt="Carro">
         </div>
       </div>
 
-      <section class="horizontal-viewport">
-        <div id="horizontalTrack" class="horizontal-track">
-          <!-- SOBRE (painel inicial) -->
-          <section id="sobre" class="panel panel--ghost">
-            <article class="road-card is-visible">
-              <div class="road-card-inner">
-                <p class="eyebrow"></p>
-                <h1>Tiago Duarte Costa</h1>
-                <p class="scene-copy">Sou um Especialista em Comunicação, e fiz uma pausa na minha carreira de sucesso como Comercial no Setor Automóvel para regressar aos Estudos. Apaixonado por tecnologia, storytelling e cultura portuguesa, licenciei-me em Multimédia e Tecnologias da Comunicação, onde explorei áreas como fotografia, web design, videojogos, e em especial Conteúdos Audiovisuais. Terminei a licenciatura com a Produção de um Documentário de Grande Relevância no panorama da Cultura Portuguesa, no qual contribuí com a Ideia Original, Desenvolvimento do Guião, e Apresentação.</p>
-                <p class="scene-copy">Procuro agora um novo desafio nas áreas de comunicação de marca, chefia de vendas, ou comercial de automóveis premium.</p>
-              </div>
-            </article>
-          </section>
-
-          <!-- PERCURSO -->
-          <section id="percurso" class="panel panel--ghost">
-            <div class="percurso-layout" aria-label="Conteúdo Percurso">
-              <h1 class="percurso-title">o meu percurso</h1>
-              <div class="percurso-subtitle">clique nos icones para ver mais detalhes</div>
-
-
-              <div class="percurso-timeline" aria-label="Linha temporal do percurso">
-                <div class="percurso-timeline-line" aria-hidden="true"></div>
-
-                <div class="percurso-icons" aria-label="Imagens do percurso">
-                  <div class="percurso-point" data-target="matecanigas" aria-label="Percurso matecanigas">
-                    <button class="percurso-icon" type="button" aria-label="Percurso matecanigas">
-                      <img src="./matecanigas.svg" alt="Percurso matecanigas">
-                    </button>
-                    <div class="percurso-date">2008</div>
-                  </div>
-
-                  <div class="percurso-point" data-target="toyota" aria-label="Percurso toyota">
-                    <button class="percurso-icon" type="button" aria-label="Percurso toyota">
-                      <img src="./toyota.svg" alt="Percurso toyota">
-                    </button>
-                    <div class="percurso-date">2018</div>
-                  </div>
-
-                  <div class="percurso-point" data-target="ua" aria-label="Percurso ua">
-                    <button class="percurso-icon" type="button" aria-label="Percurso ua">
-                      <img src="./ua.svg" alt="Percurso ua">
-                    </button>
-                    <div class="percurso-date">2021</div>
-                  </div>
-                </div>
-              </div>
-
-              <article id="percurso-detail" class="percurso-detail" aria-live="polite">
-                <div class="percurso-detail-card">
-
-                  <p class="percurso-detail-copy">
-                    <span data-detail-target="matecanigas">Na Matecanigás, lda, uma pequena empresa familiar na região de Lisboa desempenhei funções de atendimento personalizado tanto a público geral como a profissionais de várias áreas. É um período de grande enriquecimento que me torna um profissional extremamente versátil numa grande variedade de áreas técnicas relacionadas com construção civil, indústrial e setor automóvel.</span>
-                    <span data-detail-target="toyota">No final de 2018 decido apostar na paixão pelo mundo automóvel. Os resultados são imediatos. Em 2019 sou reconhecimento como Vendedor Revelação na Caetano Auto de Lisboa. Fruto de grande dedicação e aptência para o online passo a ser Gestor de Leads, e em 2020 sou o Melhor Vendedor Toyota em Portugal. No início de 2021 despeço-me da empresa para explorar novos desafios e regressar aos estudos.</span>
-                  </p>
-                </div>
-
-
-              </article>
-
-
-
-            </div>
-          </section>
-
-
-
-
-          <!-- PROJETOS -->
-          <section id="projetos" class="panel panel--ghost">
-            <div class="percurso-layout" aria-label="Conteúdo Projetos">
-              <h1 class="percurso-title">Universidade de Aveiro</h1>
-              <div class="percurso-subtitle">clique nos icones para ver alguns dos projetos desenvolvidos em contexto universitário</div>
-
-              <div class="projetos-grid" aria-live="polite">
-                <article class="projetos-card projetos-card--left" aria-label="Descrição do conteúdo">
-                  <div class="projetos-detail-card">
-                    <div class="projetos-detail-item is-active" data-projeto-detail="foto">
-                      <h3>Fotografia</h3>
-                      <p>Trabalhos fotográficos com foco em composição, direção de arte e narrativa visual.</p>
-                    </div>
-                    <div class="projetos-detail-item" data-projeto-detail="video">
-                      <h3>Vídeo</h3>
-                      <p>Projetos audiovisuais com captação, montagem e storytelling para comunicação de marca.</p>
-                    </div>
-                    <div class="projetos-detail-item" data-projeto-detail="ia">
-                      <h3>IA (vídeo)</h3>
-                      <p>Exploração de workflows com IA aplicada à criação e edição de conteúdos em formato vídeo.</p>
-                    </div>
-
-                    <div class="projetos-left-text-stack" aria-live="polite">
-                      <div id="projeto-particular-summaries" class="projetos-particular-summaries" aria-label="Descrição do conteúdo aberto"></div>
-
-                      <div class="projetos-particular-categories" aria-label="Categorias em destaque">
-                        <div class="projeto-point is-active" data-projeto-target="foto" aria-label="Projeto fotografia">
-                          <button class="projeto-icon" type="button" aria-label="Projeto fotografia">
-                            <img src="./foto.svg" alt="Projeto fotografia">
-                          </button>
-                        </div>
-                        <div class="projeto-point" data-projeto-target="video" aria-label="Projeto vídeo">
-                          <button class="projeto-icon" type="button" aria-label="Projeto vídeo">
-                            <img src="./video.svg" alt="Projeto vídeo">
-                          </button>
-                        </div>
-                        <div class="projeto-point" data-projeto-target="ia" aria-label="Projeto IA">
-                          <button class="projeto-icon" type="button" aria-label="Projeto IA">
-                            <img src="./ia.svg" alt="Projeto IA">
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-
-                <article class="projetos-card projetos-card--center" aria-label="Media viewer">
-                  <div class="projetos-media-wrap">
-                    <div class="projetos-media">
-                      <div id="projeto-fotos-placeholder" aria-hidden="true"></div>
-
-
-                      <figure class="projetos-media-item" data-projeto-content="video" data-item-index="0">
-                        <iframe src="https://www.youtube-nocookie.com/embed/oMchMbfaUkY?rel=0&modestbranding=1&playsinline=1" title="YouTube vídeo 2" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                      </figure>
-                      <figure class="projetos-media-item" data-projeto-content="video" data-item-index="1">
-                        <iframe src="https://www.youtube-nocookie.com/embed/6GwcEg-U8kA?rel=0&modestbranding=1&playsinline=1" title="YouTube vídeo 1" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                      </figure>
-
-                      <figure class="projetos-media-item" data-projeto-content="ia" data-item-index="0">
-                        <iframe src="https://www.youtube-nocookie.com/embed/LzZhZXk4mnc?rel=0&modestbranding=1&playsinline=1" title="YouTube IA 1" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                      </figure>
-                      <figure class="projetos-media-item" data-projeto-content="ia" data-item-index="1">
-                        <iframe src="https://www.youtube-nocookie.com/embed/GDuV3CyHQFk?rel=0&modestbranding=1&playsinline=1" title="YouTube IA 2" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                      </figure>
-                    </div>
-                  </div>
-
-                </article>
-
-                <article class="projetos-card projetos-card--right">
-                  <div class="projetos-bottom-nav" aria-label="Navegação">
-                    <button type="button" class="projetos-nav-btn" data-projeto-nav="prev" aria-label="Conteúdo anterior">
-                      <img src="./anterior.svg" alt="Anterior">
-                    </button>
-                    <button class="projetos-nav-btn" data-projeto-nav="next" aria-label="Conteúdo seguinte">
-                      <img src="./seguinte.svg" alt="Seguinte">
-                    </button>
-                  </div>
-                </article>
-
-              </div>
-
-            </div>
-          </section>
-
-          <!-- CONTACTO -->
-          <section id="contacto" class="panel panel--ghost">
-            <div class="percurso-layout contacto-layout" aria-label="Conteúdo Contacto">
-              <h1 class="percurso-title">contacto</h1>
-              <div class="percurso-subtitle">vamos conversar</div>
-
-              <article class="road-card is-visible contacto-card">
-                <div class="road-card-inner">
-                  <p class="scene-copy">Se quiseres falar sobre projetos, colaborações ou oportunidades profissionais, estou disponível para conversar.</p>
-                  <div class="contacto-bottom-links" aria-label="Links de contacto">
-                    <a class="contacto-icon-link" href="https://www.instagram.com/tdc_tiago/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                      <img src="./instagram.svg" alt="Instagram">
-                    </a>
-                    <a class="contacto-icon-link" href="https://www.linkedin.com/in/tiago-duarte-costa-3b9310145/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                      <img src="./linkedin.svg" alt="LinkedIn">
-                    </a>
-                    <a class="contacto-icon-link" href="./tiago_cv_2026.pdf" download="tiago_cv_2026.pdf" aria-label="CV">
-                      <img src="./cv.svg" alt="CV">
-                    </a>
-
-                  </div>
-                </div>
-              </article>
-            </div>
-          </section>
-        </div>
+      <section id="sobre" class="panel panel--ghost" aria-label="Sobre">
+        <article class="road-card is-visible">
+          <div class="road-card-inner">
+            <p class="eyebrow"></p>
+            <h1>Tiago Duarte Costa</h1>
+            <p class="scene-copy">Sou um Especialista em Comunicação, e fiz uma pausa na minha carreira de sucesso como Comercial no Setor Automóvel para regressar aos Estudos. Apaixonado por tecnologia, storytelling e cultura portuguesa, licenciei-me em Multimédia e Tecnologias da Comunicação, onde explorei áreas como fotografia, web design, videojogos, e em especial Conteúdos Audiovisuais. Terminei a licenciatura com a Produção de um Documentário de Grande Relevância no panorama da Cultura Portuguesa, no qual contribuí com a Ideia Original, Desenvolvimento do Guião, e Apresentação.</p>
+            <p class="scene-copy">Procuro agora um novo desafio nas áreas de comunicação de marca, chefia de vendas, ou comercial de automóveis premium.</p>
+          </div>
+        </article>
       </section>
     </div>
   </main>
 
   <nav class="bottom-nav" aria-label="Secções do portefólio">
-    <a href="#sobre" class="is-active">Sobre</a>
-    <a href="#percurso">Percurso</a>
-    <a href="#projetos">Projetos</a>
-    <a href="#contacto">Contacto</a>
+    <a data-active="#sobre" href="./sobre.html" class="is-active">Sobre</a>
+    <a data-active="#percurso" href="./percurso.html">Percurso</a>
+    <a data-active="#projetos" href="./projetos.html">Projetos</a>
+    <a data-active="#contacto" href="./contacto.html">Contacto</a>
   </nav>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
-  <script src="./script-scene-cards-3.js" defer></script>
+  <script src="./shell-car-nav.js" defer></script>
 </body>
 </html>
 

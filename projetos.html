@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portefólio Tiago - Projetos</title>
+  <meta name="description" content="Portefólio Tiago - Projetos">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style-scene-cards-2-fixed.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Saltar para o conteúdo</a>
+  <div class="page-background" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="./sobre.html" class="brand-mark" aria-label="Portefólio Tiago" data-fullname="Tiago Duarte Costa">Tiago Duarte Costa</a>
+  </header>
+
+  <main id="mainContent" class="experience-shell">
+    <div class="road-stage">
+      <div class="scene-layer" aria-hidden="true"><div class="scene-debug-line"></div></div>
+
+      <div class="car-lane" aria-hidden="true">
+        <div id="carWrapper" class="car-wrapper">
+          <img id="carImage" class="car-image" src="./car-on.gif" alt="Carro">
+        </div>
+      </div>
+
+      <section id="projetos" class="panel panel--ghost" aria-label="Projetos">
+        <div class="percurso-layout" aria-label="Conteúdo Projetos">
+          <h1 class="percurso-title">Universidade de Aveiro</h1>
+          <div class="percurso-subtitle">clique nos icones para ver alguns dos projetos desenvolvidos em contexto universitário</div>
+
+          <div class="projetos-grid" aria-live="polite">
+            <article class="projetos-card projetos-card--left" aria-label="Descrição do conteúdo">
+              <div class="projetos-detail-card">
+                <div class="projetos-detail-item is-active" data-projeto-detail="foto">
+                  <h3>Fotografia</h3>
+                  <p>Trabalhos fotográficos com foco em composição, direção de arte e narrativa visual.</p>
+                </div>
+                <div class="projetos-detail-item" data-projeto-detail="video">
+                  <h3>Vídeo</h3>
+                  <p>Projetos audiovisuais com captação, montagem e storytelling para comunicação de marca.</p>
+                </div>
+                <div class="projetos-detail-item" data-projeto-detail="ia">
+                  <h3>IA (vídeo)</h3>
+                  <p>Exploração de workflows com IA aplicada à criação e edição de conteúdos em formato vídeo.</p>
+                </div>
+
+                <div class="projetos-left-text-stack" aria-live="polite">
+                  <div id="projeto-particular-summaries" class="projetos-particular-summaries" aria-label="Descrição do conteúdo aberto"></div>
+
+                  <div class="projetos-particular-categories" aria-label="Categorias em destaque">
+                    <div class="projeto-point is-active" data-projeto-target="foto" aria-label="Projeto fotografia">
+                      <button class="projeto-icon" type="button" aria-label="Projeto fotografia">
+                        <img src="./foto.svg" alt="Projeto fotografia">
+                      </button>
+                    </div>
+                    <div class="projeto-point" data-projeto-target="video" aria-label="Projeto vídeo">
+                      <button class="projeto-icon" type="button" aria-label="Projeto vídeo">
+                        <img src="./video.svg" alt="Projeto vídeo">
+                      </button>
+                    </div>
+                    <div class="projeto-point" data-projeto-target="ia" aria-label="Projeto IA">
+                      <button class="projeto-icon" type="button" aria-label="Projeto IA">
+                        <img src="./ia.svg" alt="Projeto IA">
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="projetos-card projetos-card--center" aria-label="Media viewer">
+              <div class="projetos-media-wrap">
+                <div class="projetos-media">
+                  <div id="projeto-fotos-placeholder" aria-hidden="true"></div>
+
+                  <figure class="projetos-media-item" data-projeto-content="video" data-item-index="0">
+                    <iframe src="https://www.youtube-nocookie.com/embed/oMchMbfaUkY?rel=0&modestbranding=1&playsinline=1" title="YouTube vídeo 2" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </figure>
+                  <figure class="projetos-media-item" data-projeto-content="video" data-item-index="1">
+                    <iframe src="https://www.youtube-nocookie.com/embed/6GwcEg-U8kA?rel=0&modestbranding=1&playsinline=1" title="YouTube vídeo 1" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </figure>
+
+                  <figure class="projetos-media-item" data-projeto-content="ia" data-item-index="0">
+                    <iframe src="https://www.youtube-nocookie.com/embed/LzZhZXk4mnc?rel=0&modestbranding=1&playsinline=1" title="YouTube IA 1" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </figure>
+                  <figure class="projetos-media-item" data-projeto-content="ia" data-item-index="1">
+                    <iframe src="https://www.youtube-nocookie.com/embed/GDuV3CyHQFk?rel=0&modestbranding=1&playsinline=1" title="YouTube IA 2" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </figure>
+                </div>
+              </div>
+            </article>
+
+            <article class="projetos-card projetos-card--right">
+              <div class="projetos-bottom-nav" aria-label="Navegação">
+                <button type="button" class="projetos-nav-btn" data-projeto-nav="prev" aria-label="Conteúdo anterior">
+                  <img src="./anterior.svg" alt="Anterior">
+                </button>
+                <button class="projetos-nav-btn" data-projeto-nav="next" aria-label="Conteúdo seguinte">
+                  <img src="./seguinte.svg" alt="Seguinte">
+                </button>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Secções do portefólio">
+    <a data-active="#sobre" href="./sobre.html">Sobre</a>
+    <a data-active="#percurso" href="./percurso.html">Percurso</a>
+    <a data-active="#projetos" href="./projetos.html" class="is-active">Projetos</a>
+    <a data-active="#contacto" href="./contacto.html">Contacto</a>
+  </nav>
+
+
+  <script src="./script-scene-cards-3.js" defer></script>
+  <script src="./shell-car-nav.js" defer></script>
+
+</body>
+</html>
+
+
+

@@ -1,8 +1,9 @@
-- [x] Identificar painel atual de forma robusta para desktop/mobile
-- [x] Impedir estado "scrolling" ao clicar no botão da secção já ativa
-- [x] Garantir estado final parado (PNG) quando não há deslocação
-- [ ] Validar que o comportamento existente de navegação não foi alterado
-- [x] Ajustar #projetos para fundo #000000
-- [x] Remover estilo visual dos cards de #projetos (sem borda/fundo)
-- [x] Refatorar #contacto com título/subtítulo no mesmo padrão das outras secções
-- [x] Criar card de contacto estilo #sobre com 3 botões no fundo (instagram/linkedin/cv)
+# TODO
+
+- [ ] Ajustar layout para garantir que cada painel caiba sempre na viewport (desktop e mobile)
+- [ ] Remover breakpoint do JS que desativa o horizontal scroll em <=900px
+- [ ] Remover/limitar mobileFallback para não introduzir comportamento vertical
+- [ ] Trocar `min-height: 100vh` por `height: 100svh/100dvh` em `.panel` e containers principais
+- [ ] Ajustar `padding`/top spacing para evitar scroll vertical acidental
+- [ ] Testar em larguras comuns (375px, 768px, 1024px) e verificar que não aparece scroll vertical extra
+- [ ] Depois: otimizar performance (lazy/ativação de iframes + remover gsap.to dentro de onUpdate)

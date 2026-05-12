@@ -1,3 +1,6 @@
+// NOTE: this script is kept for the "projetos" page only.
+// For responsive multi-page layout (sobre/percurso/contacto), do not run GSAP/panels logic.
+
 const panels = Array.from(document.querySelectorAll('.panel'));
 const navLinks = Array.from(document.querySelectorAll('.bottom-nav a'));
 
@@ -6,6 +9,12 @@ const track = document.getElementById('horizontalTrack');
 const carWrapper = document.getElementById('carWrapper');
 const carImage = document.getElementById('carImage');
 // const road = document.querySelector('.page-background'); // não usado
+
+// Se não existir a área/track, não inicializa o comportamento antigo do index (scroll horizontal + pin).
+if (!track || panels.length === 0) {
+  // continuar apenas com o bloco de Projetos (que não depende do ScrollTrigger/pin)
+}
+
 
 let horizontalScrollTrigger = null;
 let mobileObserver = null;
@@ -96,11 +105,13 @@ function updateRoadMovement(){}
 function updateCarPosition(){if(!carWrapper || isInitialAnimation) return; const progress=getScrollProgress(); const left=carStart + (carEnd-carStart)*progress; window.gsap.to(carWrapper, {left: `${left}vw`, duration: 1.5, ease: 'power2.out'}); carWrapper.style.transform=`scaleX(${carScaleX})`}
 
 function buildHorizontalScroll(){
-  if(!window.gsap||!window.ScrollTrigger||window.innerWidth<=900||!track){
+  // Sempre tentar horizontal scroll: em telas pequenas queremos manter o pin + scroll horizontal.
+  if(!window.gsap||!window.ScrollTrigger||!track){
     if(horizontalScrollTrigger){horizontalScrollTrigger.kill(); horizontalScrollTrigger=null}
     if(window.gsap && track) window.gsap.set(track,{clearProps:'transform'});
     return
   }
+
 
   window.gsap.registerPlugin(window.ScrollTrigger);
 
@@ -140,18 +151,14 @@ function buildHorizontalScroll(){
 }
 
 function mobileFallback(){
+  // Mantemos apenas como segurança. Como agora forçamos horizontal scroll em todo o lado,
+  // o fallback fica desligado para não introduzir comportamento “vertical”.
   if(mobileObserver){
     mobileObserver.disconnect();
     mobileObserver=null;
   }
-  if(window.innerWidth>900) return;
-  mobileObserver=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting&&entry.target.id) sync(entry.target.id);
-    })
-  },{threshold:.4});
-  panels.forEach(panel=>mobileObserver.observe(panel))
 }
+
 
 // ===== Percurso: controlo apenas por clique (sem abrir/fechar por scroll) =====
 
@@ -175,6 +182,14 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 window.addEventListener('load',()=>{
+  // Nas novas 4 páginas não queremos NENHUMA lógica antiga de carro.
+  // Projetos.html é a exceção porque usa script completo para media/fotos.
+  const allowed = location.pathname.endsWith('/projetos.html') || location.pathname.endsWith('projetos.html');
+  if(!allowed) return;
+
+  // Só aqui faz sentido ativar o comportamento antigo do index.
+  if(!document.getElementById('horizontalTrack')) return;
+
   carWrapper.style.opacity='0';
   carWrapper.style.left='-30vw';
   if(carImage) carImage.src='./car-on.gif';
@@ -182,7 +197,6 @@ window.addEventListener('load',()=>{
   buildHorizontalScroll();
   mobileFallback();
   sync('sobre');
-
 
   updateRoadMovement();
 
@@ -193,16 +207,19 @@ window.addEventListener('load',()=>{
   );
 });
 
+
 window.addEventListener('resize',()=>{buildHorizontalScroll(); mobileFallback(); if(window.ScrollTrigger) window.ScrollTrigger.refresh(); updateRoadMovement(); updateCarPosition()});
+
 
 
 /* ===== Navegação da bottom-nav ===== */
 function getCurrentPanelId(){
-  if(window.innerWidth > 900 && horizontalScrollTrigger && panels.length){
+  if(horizontalScrollTrigger && panels.length){
     const progress = horizontalScrollTrigger.progress || 0;
     const index = Math.round(progress * (panels.length - 1));
     return panels[index]?.id || null;
   }
+
 
   let bestId = null;
   let bestDistance = Infinity;
@@ -230,9 +247,10 @@ function scrollToPanel(id){
     const currentPanelId = getCurrentPanelId();
     if(currentPanelId === id) return null;
 
-    if(window.innerWidth > 900 && horizontalScrollTrigger && panels.length){
+    if(horizontalScrollTrigger && panels.length){
       const index = panels.findIndex(p => p.id === id);
       if(index < 0) return null;
+
       const progress = index / Math.max(1, panels.length - 1);
       return progress < (horizontalScrollTrigger.progress || 0) ? 'up' : 'down';
     }
@@ -253,12 +271,13 @@ function scrollToPanel(id){
   }
 
 
-  if(window.innerWidth > 900 && track && window.gsap && window.ScrollTrigger && horizontalScrollTrigger){
+  if(track && window.gsap && window.ScrollTrigger && horizontalScrollTrigger){
     const index = panels.findIndex(p => p.id === id);
     if(index < 0) return;
     const st = horizontalScrollTrigger;
     const progress = index / Math.max(1, panels.length - 1);
     const targetScrollY = st.start + ((st.end - st.start) * progress);
+
 
     const direction = progress < (st.progress || 0) ? 'scrolling-up' : 'scrolling-down';
     setCarState(direction);

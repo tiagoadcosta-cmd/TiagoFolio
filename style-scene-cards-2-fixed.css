@@ -402,6 +402,15 @@ a{text-decoration:none;color:inherit}
   .road-stage{height:100svh;max-height:100svh;overflow:hidden;}
   body{overflow-y:hidden;overflow-x:hidden;}
 
+  /* Percurso: manter botões matecanigas/toyota/ua alinhados horizontalmente */
+  #percurso .percurso-icons,
+  #percurso .percurso-timeline{
+    position:relative;
+    display:block;
+  }
+  #percurso .percurso-icons{display:flex;flex-direction:row;justify-content:center;align-items:flex-end;gap:1.2rem;}
+  #percurso .percurso-point{width:auto;}
+
   /* empilhar cards left/center/right (como “projetos” em mobile) */
   #sobre .projetos-grid,
   #contacto .projetos-grid,
@@ -409,6 +418,7 @@ a{text-decoration:none;color:inherit}
     grid-template-columns:1fr;
     gap:.8rem;
   }
+
 
   #sobre .projetos-card--left{order:1;justify-content:flex-start;}
   #sobre .projetos-card--center{order:2;}

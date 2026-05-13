@@ -146,9 +146,15 @@
         });
       }
 
-      // state inicial: nada aberto
-      centerBlocks.forEach(b=>b.hidden=true);
-      rightBlocks.forEach(b=>b.hidden=true);
+      // state inicial: abrir Matecanigás por defeito (para garantir que os 3 cards cabem)
+      centerBlocks.forEach(b=>{
+        const t = b.getAttribute('data-content-for');
+        b.hidden = t !== 'matecanigas';
+      });
+      rightBlocks.forEach(b=>{
+        const t = b.getAttribute('data-detail-for');
+        b.hidden = t !== 'matecanigas';
+      });
 
       points.forEach(point=>{
         const target = point.getAttribute('data-target');

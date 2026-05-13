@@ -66,13 +66,65 @@ a{text-decoration:none;color:inherit}
 .percurso-detail{display:none;}
 
 #percurso .percurso-grid{width:100%;}
-#percurso .projetos-card{min-height:520px;}
+#percurso .projetos-card{
+  min-height:calc(100vh - clamp(4rem,8vh,10vh));
+  height:calc(100vh - clamp(4rem,8vh,10vh));
+}
+
 #percurso .projetos-card--center{padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #percurso .road-card-inner{background:transparent;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;}
-#percurso .percurso-left-actions{display:flex;flex-direction:column;gap:1.25rem;align-items:center;justify-content:flex-start;padding-top:clamp(1rem,4vh,3rem);}
+#percurso .percurso-left-actions{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:flex-end;
+  gap:clamp(.6rem,1.2vw,1.25rem);
+  padding-top:0;
+}
+
+
+#percurso .percurso-left-actions .percurso-point{
+  width:clamp(66px, 10vw, 138px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+#percurso .percurso-left-actions{
+  /* garante que os 3 botões ficam na mesma linha de fundo do card */
+  flex-wrap:nowrap;
+}
+
+
+/* força o wrapper dos 3 botões a ser uma linha */
+#percurso .percurso-left-actions{
+}
+
+#percurso .percurso-detail-card-left .percurso-left-actions{
+  flex-direction:column;
+}
+
+#percurso .percurso-detail-card-left{
+  height:100%;
+  display:flex;
+  align-items:flex-end;
+}
+
+/* alinhamento horizontal dos 3 pontos no bottom */
+#percurso .percurso-left-actions{
+  width:100%;
+}
+
+#percurso .percurso-detail-card-left .percurso-left-actions{
+  flex-direction:row;
+  justify-content:center;
+  align-items:flex-end;
+  gap:1.25rem;
+  padding-top:0;
+}
 
 .percurso-point{width:138px;display:flex;flex-direction:column;align-items:center;}
-.percurso-date{margin-top:1rem;font-size:var(--text-base);color:#ffffff;opacity:.9;font-family:var(--font-display);}
+.percurso-date{margin-top:clamp(.4rem,.9vw,1rem);font-size:clamp(.7rem,.9vw,1.05rem);color:#ffffff;opacity:.9;font-family:var(--font-display);}
 
 
 
@@ -184,6 +236,38 @@ a{text-decoration:none;color:inherit}
 #projetos .projetos-card--left{background:rgba(255,0,80,.12);}
 #projetos .projetos-card--right{background:rgba(0,180,255,.12);}
 #projetos .projetos-card--center{background:rgba(140,255,0,.10);}
+
+/* texto em todos os cards (top-left) */
+#projetos .projetos-card,
+#sobre .projetos-card,
+#contacto .projetos-card,
+#percurso .projetos-card{
+  text-align:left;
+}
+
+/* Top-left apenas para conteúdo textual (h2/h3/p e variantes) */
+#projetos .projetos-card h2,
+#projetos .projetos-card h3,
+#projetos .projetos-card p,
+#sobre .projetos-card h2,
+#sobre .projetos-card h3,
+#sobre .projetos-card p,
+#contacto .projetos-card h2,
+#contacto .projetos-card h3,
+#contacto .projetos-card p,
+#percurso .projetos-card h2,
+#percurso .projetos-card h3,
+#percurso .projetos-card p,
+#projetos .projetos-card .scene-copy,
+#sobre .projetos-card .scene-copy,
+#contacto .projetos-card .scene-copy,
+#percurso .projetos-card .scene-copy{
+  margin-left:0;
+  margin-right:auto;
+}
+
+
+
 
 /* DEBUG: cores de fundo por cards (reaproveitado para manter consistência) */
 #sobre .projetos-card--left{background:rgba(255,0,80,.12);}
@@ -431,6 +515,21 @@ a{text-decoration:none;color:inherit}
   #percurso .projetos-card--left{order:1;}
   #percurso .projetos-card--center{order:2;}
   #percurso .projetos-card--right{order:3;}
+
+  /* Percurso: manter 3 cards empilhados dentro da área visível (sem cortar) */
+  #percurso .projetos-grid{
+    gap:0.6rem;
+    margin-top:0;
+    margin-bottom:0;
+    align-items:start;
+  }
+
+  #percurso .projetos-card{
+    min-height:auto;
+    height:auto;
+    padding:0;
+  }
+
 
   .percurso-icons{margin-top:10vh;}
 

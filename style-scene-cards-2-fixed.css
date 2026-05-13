@@ -396,8 +396,12 @@ a{text-decoration:none;color:inherit}
 @media (max-width:900px){
   .percurso-icon{width:78px;height:78px;}
   .panel{height:100svh;min-height:100svh;}
-  /* garante que não aparece scroll vertical em ecrãs pequenos: tudo fica dentro da altura */
+
+  /* garante que não aparece scroll vertical em ecrãs pequenos (igual ao projetos) */
+  main#mainContent.experience-shell{height:100svh;max-height:100svh;overflow:hidden;}
+  .road-stage{height:100svh;max-height:100svh;overflow:hidden;}
   body{overflow-y:hidden;}
+
 
 
   .percurso-icons{margin-top:10vh;}

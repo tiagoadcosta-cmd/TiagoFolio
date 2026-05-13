@@ -396,6 +396,9 @@ a{text-decoration:none;color:inherit}
 @media (max-width:900px){
   .percurso-icon{width:78px;height:78px;}
   .panel{height:100svh;min-height:100svh;}
+  /* garante que não aparece scroll vertical em ecrãs pequenos: tudo fica dentro da altura */
+  body{overflow-y:hidden;}
+
 
   .percurso-icons{margin-top:10vh;}
   #projetos .projetos-grid{

@@ -402,10 +402,28 @@ a{text-decoration:none;color:inherit}
   .road-stage{height:100svh;max-height:100svh;overflow:hidden;}
   body{overflow-y:hidden;overflow-x:hidden;}
 
+  /* empilhar cards left/center/right (como “projetos” em mobile) */
+  #sobre .projetos-grid,
+  #contacto .projetos-grid,
+  #percurso .percurso-grid{
+    grid-template-columns:1fr;
+    gap:.8rem;
+  }
 
+  #sobre .projetos-card--left{order:1;justify-content:flex-start;}
+  #sobre .projetos-card--center{order:2;}
+  #sobre .projetos-card--right{order:3;}
 
+  #contacto .projetos-card--left{order:1;justify-content:flex-start;}
+  #contacto .projetos-card--center{order:2;}
+  #contacto .projetos-card--right{order:3;}
+
+  #percurso .projetos-card--left{order:1;}
+  #percurso .projetos-card--center{order:2;}
+  #percurso .projetos-card--right{order:3;}
 
   .percurso-icons{margin-top:10vh;}
+
   #projetos .projetos-grid{
     grid-template-columns:1fr;
     gap:.8rem;

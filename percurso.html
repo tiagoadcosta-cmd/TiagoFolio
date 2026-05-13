@@ -33,41 +33,85 @@
           <h1 class="percurso-title">o meu percurso</h1>
           <div class="percurso-subtitle">clique nos icones para ver mais detalhes</div>
 
-          <div class="percurso-timeline" aria-label="Linha temporal do percurso">
-            <div class="percurso-timeline-line" aria-hidden="true"></div>
 
-            <div class="percurso-icons" aria-label="Imagens do percurso">
-              <div class="percurso-point" data-target="matecanigas" aria-label="Percurso matecanigas">
-                <button class="percurso-icon" type="button" aria-label="Percurso matecanigas">
-                  <img src="./matecanigas.svg" alt="Percurso matecanigas">
-                </button>
-                <div class="percurso-date">2008</div>
-              </div>
 
-              <div class="percurso-point" data-target="toyota" aria-label="Percurso toyota">
-                <button class="percurso-icon" type="button" aria-label="Percurso toyota">
-                  <img src="./toyota.svg" alt="Percurso toyota">
-                </button>
-                <div class="percurso-date">2018</div>
-              </div>
 
-              <div class="percurso-point" data-target="ua" aria-label="Percurso ua">
-                <button class="percurso-icon" type="button" aria-label="Percurso ua">
-                  <img src="./ua.svg" alt="Percurso ua">
-                </button>
-                <div class="percurso-date">2021</div>
+
+          <div class="projetos-grid percurso-grid" aria-live="polite">
+            <!-- LEFT: botões (matecanigas/toyota/ua) -->
+            <article class="projetos-card projetos-card--left" aria-label="Percurso - botões">
+              <div class="percurso-detail-card">
+                <div class="percurso-detail-card-left">
+                  <div class="percurso-left-actions" aria-label="Selecionar entidade">
+                    <div class="percurso-point" data-target="matecanigas" aria-label="Percurso matecanigas">
+                      <button class="percurso-icon" type="button" aria-label="Percurso matecanigas">
+                        <img src="./matecanigas.svg" alt="Percurso matecanigas">
+                      </button>
+                      <div class="percurso-date">2008</div>
+                    </div>
+
+                    <div class="percurso-point" data-target="toyota" aria-label="Percurso toyota">
+                      <button class="percurso-icon" type="button" aria-label="Percurso toyota">
+                        <img src="./toyota.svg" alt="Percurso toyota">
+                      </button>
+                      <div class="percurso-date">2018</div>
+                    </div>
+
+                    <div class="percurso-point" data-target="ua" aria-label="Percurso ua">
+                      <button class="percurso-icon" type="button" aria-label="Percurso ua">
+                        <img src="./ua.svg" alt="Percurso ua">
+                      </button>
+                      <div class="percurso-date">2021</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            </article>
+
+            <!-- CENTER: dependente -->
+            <article class="projetos-card projetos-card--center" aria-label="Percurso - conteúdo central">
+              <div class="road-card-inner">
+                <p class="eyebrow" aria-hidden="true"></p>
+
+                <div class="percurso-center-content" data-content-for="matecanigas" aria-live="polite" hidden>
+                  <p class="card-title">Matecanigás, Lda</p>
+
+                  <p class="scene-copy">Na Matecanigás, Lda, uma pequena empresa familiar na região de Lisboa desempenhei funções de atendimento personalizado tanto a público geral como a profissionais de várias áreas. É um período de grande enriquecimento que me torna um profissional extremamente versátil numa grande variedade de áreas técnicas relacionadas com construção civil, industrial e setor automóvel.</p>
+                </div>
+
+                <div class="percurso-center-content" data-content-for="toyota" aria-live="polite" hidden>
+                  <p class="card-title">Toyota - Caetano Auto Lisboa</p>
+                  <p class="scene-copy">Reconhecimento em vendas, performance e evolução para gestão de leads e acompanhamento digital do funil comercial.
+                </div>
+
+                <div class="percurso-center-content" data-content-for="ua" aria-live="polite" hidden>
+                  <p class="card-title">Universidade de Aveiro</p>
+                  <p class="scene-copy">Licenciatura em Multimédia e Tecnologias da Comunicação, com foco em criação, fotografia e produção audiovisual, culminando em projetos com relevância cultural.</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- RIGHT: dependente (mais detalhes) -->
+            <article class="projetos-card projetos-card--right" aria-label="Percurso - mais detalhes">
+              <div class="projetos-bottom-nav" aria-label="Mais detalhes">
+                <div class="percurso-detail-right" data-detail-for="matecanigas" hidden>
+                  <div class="placeholder-text">Mais detalhes (Matecanigás)</div>
+                  <p class="percurso-detail-copy">Atendimento, comunicação e domínio técnico em múltiplos contextos — construindo base sólida para evoluir em áreas de automóvel e gestão.</p>
+                </div>
+
+                <div class="percurso-detail-right" data-detail-for="toyota" hidden>
+                  <div class="placeholder-text">Mais detalhes (Toyota)</div>
+                  <p class="percurso-detail-copy">Reconhecimento em vendas, performance e evolução para gestão de leads e acompanhamento digital do funil comercial.</p>
+                </div>
+
+                <div class="percurso-detail-right" data-detail-for="ua" hidden>
+                  <div class="placeholder-text">Mais detalhes (UA)</div>
+                  <p class="percurso-detail-copy">Formação técnica e criativa para produção multimédia, direção, fotografia e conteúdos audiovisuais com foco em storytelling.</p>
+                </div>
+              </div>
+            </article>
           </div>
 
-          <article id="percurso-detail" class="percurso-detail" aria-live="polite">
-            <div class="percurso-detail-card">
-              <p class="percurso-detail-copy">
-                <span data-detail-target="matecanigas">Na Matecanigás, lda, uma pequena empresa familiar na região de Lisboa desempenhei funções de atendimento personalizado tanto a público geral como a profissionais de várias áreas. É um período de grande enriquecimento que me torna um profissional extremamente versátil numa grande variedade de áreas técnicas relacionadas com construção civil, indústrial e setor automóvel.</span>
-                <span data-detail-target="toyota">No final de 2018 decido apostar na paixão pelo mundo automóvel. Os resultados são imediatos. Em 2019 sou reconhecimento como Vendedor Revelação na Caetano Auto de Lisboa. Fruto de grande dedicação e aptência para o online passo a ser Gestor de Leads, e em 2020 sou o Melhor Vendedor Toyota em Portugal. No início de 2021 despeço-me da empresa para explorar novos desafios e regressar aos estudos.</span>
-              </p>
-            </div>
-          </article>
         </div>
       </section>
     </div>
@@ -84,79 +128,41 @@
   <script src="./shell-car-nav.js" defer></script>
   <script>
     (function(){
-      const points = Array.from(document.querySelectorAll('#percurso .percurso-point[data-target]'));
       const perc = document.getElementById('percurso');
-      const detail = document.getElementById('percurso-detail');
-      if(!perc || !detail) return;
+      if(!perc) return;
 
-      function openPercursoDetail(mode, target){
-        perc.classList.remove('is-mode-1','is-mode-2');
-        if(mode === 1) perc.classList.add('is-mode-1');
-        if(mode === 2) perc.classList.add('is-mode-2');
+      const centerBlocks = Array.from(perc.querySelectorAll('.percurso-center-content[data-content-for]'));
+      const rightBlocks = Array.from(perc.querySelectorAll('.percurso-detail-right[data-detail-for]'));
+      const points = Array.from(perc.querySelectorAll('.percurso-point[data-target]'));
 
-        const titleEl = document.querySelector('#percurso .percurso-title');
-        const subTitleEl = document.querySelector('#percurso .percurso-subtitle');
-
-        if(target === 'matecanigas'){
-          titleEl?.replaceChildren(document.createTextNode('Matecanigás, Lda'));
-          subTitleEl?.replaceChildren(document.createTextNode('2008 a 2018'));
-        } else if(target === 'toyota'){
-          titleEl?.replaceChildren(document.createTextNode('Toyota - Caetano Auto Lisboa'));
-          subTitleEl?.replaceChildren(document.createTextNode('2018 a 2021'));
-        } else {
-          titleEl?.replaceChildren(document.createTextNode('PERCURSO'));
-          subTitleEl?.replaceChildren(document.createTextNode('clique nos icones para ver mais detalhes'));
-        }
-
-        detail.setAttribute('data-open-target', target);
-        detail.classList.add('is-open');
+      function setActiveEntity(target){
+        centerBlocks.forEach(b=>{
+          const t = b.getAttribute('data-content-for');
+          b.hidden = t !== target;
+        });
+        rightBlocks.forEach(b=>{
+          const t = b.getAttribute('data-detail-for');
+          b.hidden = t !== target;
+        });
       }
 
-      function closePercursoDetail(){
-        perc.classList.remove('is-mode-1','is-mode-2');
-        detail.classList.remove('is-open');
+      // state inicial: nada aberto
+      centerBlocks.forEach(b=>b.hidden=true);
+      rightBlocks.forEach(b=>b.hidden=true);
 
-        const titleEl = document.querySelector('#percurso .percurso-title');
-        const subTitleEl = document.querySelector('#percurso .percurso-subtitle');
-        titleEl?.replaceChildren(document.createTextNode('PERCURSO'));
-        subTitleEl?.replaceChildren(document.createTextNode('clique nos icones para ver mais detalhes'));
-      }
-
-      points.forEach(point => {
+      points.forEach(point=>{
         const target = point.getAttribute('data-target');
         const btn = point.querySelector('button');
-        if(!btn || !target) return;
+        if(!target || !btn) return;
 
-        btn.addEventListener('click', () => {
-          if(target === 'matecanigas') {
-            const isOpenMate = perc.classList.contains('is-mode-1') && detail.classList.contains('is-open');
-            if(isOpenMate) { closePercursoDetail(); return; }
-            openPercursoDetail(1,'matecanigas');
-            return;
-          }
-
-          if(target === 'toyota') {
-            const isOpenToyota = perc.classList.contains('is-mode-2') && detail.classList.contains('is-open');
-            if(isOpenToyota) { closePercursoDetail(); return; }
-            openPercursoDetail(2,'toyota');
-            return;
-          }
-
-          if(target === 'ua') {
-            perc.classList.remove('is-mode-1','is-mode-2');
-            closePercursoDetail();
-            window.location.href = './projetos.html';
-            return;
-          }
+        btn.addEventListener('click', ()=>{
+          // UA também deve abrir cards (não navega)
+          setActiveEntity(target);
         });
-      });
-
-      perc.addEventListener('click', (e)=>{
-        if(detail.contains(e.target) || e.target.closest('.percurso-point')) return;
-        closePercursoDetail();
       });
     })();
   </script>
 </body>
 </html>
+
 

@@ -1,9 +1,18 @@
-# TODO
+# TODO - cards 3 colunas
 
-- [ ] Ajustar layout para garantir que cada painel caiba sempre na viewport (desktop e mobile)
-- [ ] Remover breakpoint do JS que desativa o horizontal scroll em <=900px
-- [ ] Remover/limitar mobileFallback para não introduzir comportamento vertical
-- [ ] Trocar `min-height: 100vh` por `height: 100svh/100dvh` em `.panel` e containers principais
-- [ ] Ajustar `padding`/top spacing para evitar scroll vertical acidental
-- [ ] Testar em larguras comuns (375px, 768px, 1024px) e verificar que não aparece scroll vertical extra
-- [ ] Depois: otimizar performance (lazy/ativação de iframes + remover gsap.to dentro de onUpdate)
+## Feito
+- (ver histórico) mudanças em `shell-car-nav.js` para testar eliminação do carro
+
+## A fazer (agora)
+- [ ] `index.html`: adicionar section full-width (título/subtítulo) + trocar o layout para 3 cards no meio (esq/centro/dir) igual a `projetos.html`.
+- [ ] `contacto.html`: adicionar section full-width (título/subtítulo) + trocar o layout para 3 cards no meio (esq/centro/dir) igual a `projetos.html`.
+- [ ] `percurso.html`: trocar o layout para 3 cards no meio (esq=matecanigas, centro=toyota, dir=+detalhes) mantendo o comportamento atual (matecanigas/toyota/mais detalhes).
+- [ ] `percurso.html`: remover dependência do layout antigo e garantir consistência do grid 3-colunas.
+
+- [ ] `style-scene-cards-2-fixed.css`: criar/refatorar estilos genéricos para `#sobre/#contacto/#percurso` usando o mesmo padrão de grid de `#projetos`.
+- [ ] Limpar qualquer lógica/seletores no CSS/HTML que pertençam ao sistema horizontal de scroll (index/panels) e que não seja necessário nas 4 páginas.
+
+## Teste
+- [ ] validar desktop e mobile (<=900px, <=768px e <=480px) para não quebrar.
+
+

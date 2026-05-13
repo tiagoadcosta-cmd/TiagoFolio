@@ -45,25 +45,35 @@ a{text-decoration:none;color:inherit}
 #projetos{background:#000000;position:relative}
 #contacto{background:#000000}
 
-/* ===== Percurso (painel #percurso) ===== */
+/* ===== Layout comum: 3 cards alinhados horizontalmente (como Projetos) ===== */
+/* mantém o padrão do #projetos.projetos-grid */
 .percurso-layout{width:100%;height:100%;display:block;padding:0;}
+
+/* sobre/contacto usam o mesmo grid “projetos” */
+#sobre .sobre-grid,
+#contacto .contacto-grid,
+#percurso .percurso-grid{ }
+
+/* ===== Percurso (painel #percurso) ===== */
+
 .percurso-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);line-height:1.05;margin:0;padding:0 clamp(1rem,3vw,3rem) 0 clamp(1rem,3vw,3rem);}
 .percurso-subtitle{margin-top:0.1rem;padding:0 clamp(1rem,3vw,3rem);font-size:clamp(1rem,1.3vw,1.2rem);color:rgba(255,255,255,.85);font-family:var(--font-body);letter-spacing:.01em;}
 #percurso{position:relative;}
 
-/* Linha temporal + 3 círculos */
-.percurso-timeline{position:absolute;left:0;right:0;top:calc(100vh - 2.5rem - 98px - 11.0rem);padding:0 clamp(1rem,3vw,3rem);pointer-events:auto;}
-.percurso-timeline-line{position:absolute;left:clamp(1rem,3vw,3rem);right:clamp(1rem,3vw,3rem);top:69px;height:5px;background:rgba(255,255,255,.24);transition:opacity 350ms ease, transform 350ms ease;}
-/* quando um card está aberto, esconder o traço com suavidade */
-#percurso.is-mode-1 .percurso-timeline-line,#percurso.is-mode-2 .percurso-timeline-line{opacity:0;transform:scaleX(.7);}
+/* ===== Percurso (novo): sem timeline/overlay antigo; depende dos cards (center + right) ===== */
+.percurso-timeline{display:none;}
+.percurso-icons{display:none;}
+.percurso-detail{display:none;}
 
-.percurso-icons{position:relative;display:flex;justify-content:space-between;align-items:flex-end;}
+#percurso .percurso-grid{width:100%;}
+#percurso .projetos-card{min-height:520px;}
+#percurso .projetos-card--center{padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#percurso .road-card-inner{background:transparent;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;}
+#percurso .percurso-left-actions{display:flex;flex-direction:column;gap:1.25rem;align-items:center;justify-content:flex-start;padding-top:clamp(1rem,4vh,3rem);}
+
 .percurso-point{width:138px;display:flex;flex-direction:column;align-items:center;}
 .percurso-date{margin-top:1rem;font-size:var(--text-base);color:#ffffff;opacity:.9;font-family:var(--font-display);}
 
-/* detalhe que abre ao clicar */
-.percurso-detail{position:absolute;left:50%;transform:translate(-50%, 10px);right:auto;width:clamp(260px, 62vw, 640px);top:calc(45vh - 60px);margin:0;opacity:0;pointer-events:none;padding:clamp(1.5rem,3vw,2.25rem);border:none;border-radius:1rem;background:transparent;backdrop-filter:none;transition:opacity 350ms ease, transform 350ms ease, filter 350ms ease;}
-.percurso-detail.is-open{opacity:1;transform:translate(-50%, 0);pointer-events:auto;}
 
 
 
@@ -81,7 +91,9 @@ a{text-decoration:none;color:inherit}
 #percurso.is-mode-2 .percurso-detail[data-open-target="toyota"]{left:70%;transform:translate(-50%, 10px);}
 
 @media (max-width:768px){
-  /* cards (textos maiores) sempre centrados */
+  /* mobile: empilhar os 3 cards e manter largura controlada */
+  .scene-cards-3{grid-template-columns:1fr;gap:0;}
+
   #sobre .road-card,
   #contacto .contacto-card{
     right:auto;
@@ -89,16 +101,18 @@ a{text-decoration:none;color:inherit}
     transform:translateX(-50%) translateY(18px) scale(.98);
   }
 
+
   #sobre .road-card.is-visible{
-    transform:translateX(-50%) translateY(0) scale(1);
+    transform:translateX(-50%) translateY(-50%) scale(1);
     opacity:1;
   }
 
   /* contacto-card já é exibido via classe `is-visible` no HTML */
   #contacto .contacto-card.is-visible{
-    transform:translateX(-50%) translateY(0) scale(1);
+    transform:translateX(-50%) translateY(-50%) scale(1);
     opacity:1;
   }
+
 
 
 
@@ -146,13 +160,17 @@ a{text-decoration:none;color:inherit}
 #projetos .percurso-title,
 #projetos .percurso-subtitle{text-align:left;}
 
-#projetos .projetos-grid{
+#projetos .projetos-grid,
+.sobre-grid,
+.contacto-grid,
+.percurso-grid{
   margin:clamp(.75rem,2vh,1.5rem) clamp(1rem,3vw,3rem) 0;
   display:grid;
   grid-template-columns:minmax(130px,1fr) minmax(740px,1.8fr) minmax(220px,1fr);
   gap:1rem;
   align-items:stretch;
 }
+
 #projetos .projetos-card{
   border:none;
   border-radius:0;
@@ -166,6 +184,21 @@ a{text-decoration:none;color:inherit}
 #projetos .projetos-card--left{background:rgba(255,0,80,.12);}
 #projetos .projetos-card--right{background:rgba(0,180,255,.12);}
 #projetos .projetos-card--center{background:rgba(140,255,0,.10);}
+
+/* DEBUG: cores de fundo por cards (reaproveitado para manter consistência) */
+#sobre .projetos-card--left{background:rgba(255,0,80,.12);}
+#sobre .projetos-card--center{background:rgba(140,255,0,.10);}
+#sobre .projetos-card--right{background:rgba(0,180,255,.12);}
+
+#percurso .projetos-card--left{background:rgba(255,0,80,.12);}
+#percurso .projetos-card--center{background:rgba(140,255,0,.10);}
+#percurso .projetos-card--right{background:rgba(0,180,255,.12);}
+
+#contacto .projetos-card--left{background:rgba(255,0,80,.12);}
+#contacto .projetos-card--center{background:rgba(140,255,0,.10);}
+#contacto .projetos-card--right{background:rgba(0,180,255,.12);}
+
+
 
 #projetos .projetos-card--left,
 #projetos .projetos-card--right{
@@ -391,7 +424,29 @@ a{text-decoration:none;color:inherit}
 .road-card-inner{background:transparent;border:none;border-radius:1rem;padding:clamp(1.5rem,3vw,2.25rem);box-shadow:none;backdrop-filter:none}
 .eyebrow{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.16em;color:#ffffff;margin-bottom:var(--space-4)}
 
-h1{font-family:var(--font-display);font-style:italic;line-height:1.05;margin:0 0 var(--space-4);font-size:clamp(2rem,4vw,3.5rem);color:#ffffff}
+h1{font-family:var(--font-display);font-style:normal;line-height:1.05;margin:0 0 var(--space-4);font-size:clamp(2rem,4vw,3.5rem);color:#ffffff}
+
+/* H1 dentro das cards (não itálico): “h2 identico ao texto normal mas bold e um pouco maior” */
+.card-title{
+  font-family:var(--font-display);
+  font-style:normal;
+  font-weight:700;
+  font-size:clamp(1.1rem,1.35vw,1.35rem);
+  line-height:1.15;
+  margin:0 0 .35rem;
+  color:#ffffff;
+}
+
+/* Evitar que qualquer h1 dentro de cards (percurso) reapareça estilo global */
+#percurso .projetos-card h1{
+  font-size:inherit;
+  font-family:inherit;
+  font-style:normal;
+  font-weight:700;
+  margin:0 0 .35rem;
+}
+
+
 h2{font-family:var(--font-display);line-height:1.05;margin:0 0 var(--space-4);font-size:clamp(1.75rem,3vw,2.75rem);color:#ffffff}
 
 /* evitar que o título dentro do card de percurso exploda tamanho */

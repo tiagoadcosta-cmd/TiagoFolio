@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portefólio Tiago - Sobre</title>
+  <meta name="description" content="Portefólio Tiago - Sobre">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style-scene-cards-2-fixed.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Saltar para o conteúdo</a>
+  <div class="page-background" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="./sobre.html" class="brand-mark" aria-label="Portefólio Tiago" data-fullname="Tiago Duarte Costa">Tiago Duarte Costa</a>
+  </header>
+
+  <main id="mainContent" class="experience-shell">
+    <div class="road-stage">
+      <div class="scene-layer" aria-hidden="true"><div class="scene-debug-line"></div></div>
+
+      <div class="car-lane" aria-hidden="true">
+        <div id="carWrapper" class="car-wrapper">
+          <img id="carImage" class="car-image" src="./car-on.gif" alt="Carro">
+        </div>
+      </div>
+
+      <section id="sobre" class="panel panel--ghost" aria-label="Sobre">
+        <div class="percurso-layout sobre-layout" aria-label="Conteúdo Sobre">
+          <h1 class="percurso-title">Contacto</h1>
+          <div class="percurso-subtitle">Como chegar até mim</div>
+
+          <div class="projetos-grid sobre-grid" aria-live="polite">
+            <article class="projetos-card projetos-card--center" aria-label="Resumo sobre (centro)">
+              <div class="road-card-inner">
+                <h3 class="scene-copy">Pode chegar até mim por:</h3>
+                <p class="scene-copy">email: tiagoadcosta@ua.pt</p>
+                <p class="scene-copy">Ou através das minhas redes sociais em:</p>
+              </div>
+            </article>
+
+            <article class="projetos-card projetos-card--right" aria-label="Texto sobre (direita)">
+              <div class="contacto-social-row" aria-label="Links de contacto">
+                <a href="https://www.instagram.com/tdc_tiago/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <img src="./instagram.svg" alt="Instagram">
+                </a>
+                <a href="https://www.linkedin.com/in/tiago-duarte-costa-3b9310145/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <img src="./linkedin.svg" alt="LinkedIn">
+                </a>
+                <a href="./tiago_cv_2026.pdf" download="tiago_cv_2026.pdf" aria-label="CV">
+                  <img src="./cv.svg" alt="CV">
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <nav class="bottom-nav" aria-label="Início">
+    <a data-active="#sobre" href="./index.html" class="is-active">Sobre</a>
+
+    <a data-active="#percurso" href="./percurso.html">Percurso</a>
+    <a data-active="#projetos" href="./projetos.html">Projetos</a>
+    <a data-active="#contacto" href="./contacto.html">Contacto</a>
+  </nav>
+
+  <script src="./shell-car-nav.js" defer></script>
+</body>
+</html>
+

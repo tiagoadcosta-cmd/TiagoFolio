@@ -1,174 +1,223 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portefólio Tiago - Percurso</title>
-  <meta name="description" content="Portefólio Tiago - Percurso">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style-scene-cards-2-fixed.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiago Duarte Costa — Percurso</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .logo-choice {
+      width: auto;
+      padding: 0;
+      min-width: 0;
+
+      border: none;
+      outline: none;
+      box-shadow: none;
+      border-radius: 999px;
+      background: transparent;
+      opacity: 0.5;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: none;
+      transform: none;
+    }
+
+
+
+
+.logo-choice img {
+      max-height: none;
+      width: clamp(56px, 10vw, 90px);
+      height: auto;
+
+      object-fit: contain;
+      filter: grayscale(1) brightness(1.2);
+      pointer-events: none;
+    }
+
+
+
+.logo-choice:hover,
+    .logo-choice:focus-visible {
+      background: transparent;
+      border-color: transparent;
+      transform: none;
+      opacity: 1;
+    }
+
+
+
+
+    .card__actions--stack-no-grid {
+      display: flex;
+      width: 100%;
+      gap: var(--space-2);
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: var(--space-2);
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+    }
+
+
+    @media (max-width: 900px) {
+      .card__actions--stack-no-grid {
+        gap: var(--space-2);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .card__actions--stack-no-grid {
+        gap: var(--space-2);
+      }
+    }
+
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#mainContent">Saltar para o conteúdo</a>
-  <div class="page-background" aria-hidden="true"></div>
+  <div class="page">
 
-  <header class="site-header">
-    <a href="./sobre.html" class="brand-mark" aria-label="Portefólio Tiago" data-fullname="Tiago Duarte Costa">Tiago Duarte Costa</a>
-  </header>
-
-  <main id="mainContent" class="experience-shell">
-    <div class="road-stage">
-      <div class="scene-layer" aria-hidden="true"><div class="scene-debug-line"></div></div>
-
-      <div class="car-lane" aria-hidden="true">
-        <div id="carWrapper" class="car-wrapper">
-          <img id="carImage" class="car-image" src="./car-on.gif" alt="Carro">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="site-logo" aria-label="Logo">
+          <!-- meter logo aqui -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </div>
+        <p class="site-name">Tiago Duarte Costa</p>
       </div>
+    </header>
 
-      <section id="percurso" class="panel panel--ghost" aria-label="Percurso">
-        <div class="percurso-layout" aria-label="Conteúdo Percurso">
-          <h1 class="percurso-title">o meu percurso</h1>
-          <div class="percurso-subtitle">clique nos icones para ver mais detalhes</div>
+    <section class="hero">
+      <div class="hero__inner">
+        <h1>Percurso académico e profissional.</h1>
+        <p>Uma leitura rápida de experiências e contextos que ajudaram a construir a minha visão em comunicação, imagem e multimédia.</p>
+      </div>
+    </section>
 
+    <main class="cards-section">
+      <div class="cards-section__inner">
+        <section class="cards-grid">
 
+          <article class="card">
+            <div class="card__content">
+              <h2>Contextos</h2>
+              <p>Seleciona um dos três percursos para ver a informação principal e secundária correspondente.</p>
+            </div>
 
+            <div class="card__actions card__actions--stack card__actions--stack-no-grid">
+              <button class="logo-choice" type="button" data-target="matecanigas" aria-pressed="true" aria-label="Matecanigas">
+                <img src="matecanigas.svg" alt="Matecanigas">
+              </button>
 
+              <button class="logo-choice" type="button" data-target="toyota" aria-pressed="false" aria-label="Toyota">
+                <img src="toyota.svg" alt="Toyota">
+              </button>
 
-          <div class="projetos-grid percurso-grid" aria-live="polite">
-            <!-- LEFT: botões (matecanigas/toyota/ua) -->
-            <article class="projetos-card projetos-card--left" aria-label="Percurso - botões">
-              <div class="percurso-detail-card">
-                <div class="percurso-detail-card-left">
-                  <div class="percurso-left-actions" aria-label="Selecionar entidade">
-                    <div class="percurso-point" data-target="matecanigas" aria-label="Percurso matecanigas">
-                      <button class="percurso-icon" type="button" aria-label="Percurso matecanigas">
-                        <img src="./matecanigas.svg" alt="Percurso matecanigas">
-                      </button>
-                      <div class="percurso-date">2008</div>
-                    </div>
+              <button class="logo-choice" type="button" data-target="ua" aria-pressed="false" aria-label="Universidade de Aveiro">
+                <img src="ua.svg" alt="UA">
+              </button>
+            </div>
+          </article>
 
-                    <div class="percurso-point" data-target="toyota" aria-label="Percurso toyota">
-                      <button class="percurso-icon" type="button" aria-label="Percurso toyota">
-                        <img src="./toyota.svg" alt="Percurso toyota">
-                      </button>
-                      <div class="percurso-date">2018</div>
-                    </div>
+          <article class="card">
+            <div class="card__content">
+              <h2>Resumo principal</h2>
+              <p id="main-text">texto principal matecanigas</p>
+            </div>
+          </article>
 
-                    <div class="percurso-point" data-target="ua" aria-label="Percurso ua">
-                      <button class="percurso-icon" type="button" aria-label="Percurso ua">
-                        <img src="./ua.svg" alt="Percurso ua">
-                      </button>
-                      <div class="percurso-date">2021</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
+          <article class="card">
+            <div class="card__content">
+              <h2>Resumo secundário</h2>
+              <p id="secondary-text">texto secundário matecanigas</p>
+            </div>
+          </article>
 
-            <!-- CENTER: dependente -->
-            <article class="projetos-card projetos-card--center" aria-label="Percurso - conteúdo central">
-              <div class="road-card-inner">
-                <p class="eyebrow" aria-hidden="true"></p>
+        </section>
+      </div>
+    </main>
 
-                <div class="percurso-center-content" data-content-for="matecanigas" aria-live="polite" hidden>
-                  <p class="card-title">Matecanigás, Lda</p>
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <div class="bottom-nav__inner">
 
-                  <p class="scene-copy">Na Matecanigás, Lda, uma pequena empresa familiar na região de Lisboa desempenhei funções de atendimento personalizado tanto a público geral como a profissionais de várias áreas. É um período de grande enriquecimento que me torna um profissional extremamente versátil numa grande variedade de áreas técnicas relacionadas com construção civil, industrial e setor automóvel.</p>
-                </div>
-
-                <div class="percurso-center-content" data-content-for="toyota" aria-live="polite" hidden>
-                  <p class="card-title">Toyota - Caetano Auto Lisboa</p>
-                  <p class="scene-copy">Reconhecimento em vendas, performance e evolução para gestão de leads e acompanhamento digital do funil comercial.
-                </div>
-
-                <div class="percurso-center-content" data-content-for="ua" aria-live="polite" hidden>
-                  <p class="card-title">Universidade de Aveiro</p>
-                  <p class="scene-copy">Licenciatura em Multimédia e Tecnologias da Comunicação, com foco em criação, fotografia e produção audiovisual, culminando em projetos com relevância cultural.</p>
-                </div>
-              </div>
-            </article>
-
-            <!-- RIGHT: dependente (mais detalhes) -->
-            <article class="projetos-card projetos-card--right" aria-label="Percurso - mais detalhes">
-              <div class="projetos-bottom-nav" aria-label="Mais detalhes">
-                <div class="percurso-detail-right" data-detail-for="matecanigas" hidden>
-                  <div class="placeholder-text">Mais detalhes (Matecanigás)</div>
-                  <p class="percurso-detail-copy">Atendimento, comunicação e domínio técnico em múltiplos contextos — construindo base sólida para evoluir em áreas de automóvel e gestão.</p>
-                </div>
-
-                <div class="percurso-detail-right" data-detail-for="toyota" hidden>
-                  <div class="placeholder-text">Mais detalhes (Toyota)</div>
-                  <p class="percurso-detail-copy">Reconhecimento em vendas, performance e evolução para gestão de leads e acompanhamento digital do funil comercial.</p>
-                </div>
-
-                <div class="percurso-detail-right" data-detail-for="ua" hidden>
-                  <div class="placeholder-text">Mais detalhes (UA)</div>
-                  <p class="percurso-detail-copy">Formação técnica e criativa para produção multimédia, direção, fotografia e conteúdos audiovisuais com foco em storytelling.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-
+        <div class="bottom-nav__side bottom-nav__side--left">
+          <a href="index.html">Voltar</a>
         </div>
-      </section>
-    </div>
-  </main>
 
-  <nav class="bottom-nav" aria-label="Início">
-    <a data-active="#sobre" href="./index.html">Sobre</a>
+        <div class="bottom-nav__center">
+          <a href="index.html">Início</a>
+          <a href="percurso.html" class="is-active">Percurso</a>
+          <a href="projetos.html">Projetos</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
 
-    <a data-active="#percurso" href="./percurso.html" class="is-active">Percurso</a>
-    <a data-active="#projetos" href="./projetos.html">Projetos</a>
-    <a data-active="#contacto" href="./contacto.html">Contacto</a>
-  </nav>
+        <div class="bottom-nav__side bottom-nav__side--right">
+          <a href="projetos.html">Continuar</a>
+        </div>
 
-  <script src="./shell-car-nav.js" defer></script>
+      </div>
+    </nav>
+
+  </div>
+
   <script>
-    (function(){
-      const perc = document.getElementById('percurso');
-      if(!perc) return;
-
-      const centerBlocks = Array.from(perc.querySelectorAll('.percurso-center-content[data-content-for]'));
-      const rightBlocks = Array.from(perc.querySelectorAll('.percurso-detail-right[data-detail-for]'));
-      const points = Array.from(perc.querySelectorAll('.percurso-point[data-target]'));
-
-      function setActiveEntity(target){
-        centerBlocks.forEach(b=>{
-          const t = b.getAttribute('data-content-for');
-          b.hidden = t !== target;
-        });
-        rightBlocks.forEach(b=>{
-          const t = b.getAttribute('data-detail-for');
-          b.hidden = t !== target;
-        });
+    const data = {
+      matecanigas: {
+        main: "texto principal matecanigas",
+        secondary: "texto secundário matecanigas"
+      },
+      toyota: {
+        main: "texto principal toyota",
+        secondary: "texto secundário toyota"
+      },
+      ua: {
+        main: "texto principal ua",
+        secondary: "texto secundário ua"
       }
+    };
 
-      // state inicial: abrir Matecanigás por defeito (para garantir que os 3 cards cabem)
-      centerBlocks.forEach(b=>{
-        const t = b.getAttribute('data-content-for');
-        b.hidden = t !== 'matecanigas';
-      });
-      rightBlocks.forEach(b=>{
-        const t = b.getAttribute('data-detail-for');
-        b.hidden = t !== 'matecanigas';
-      });
+    const buttons = document.querySelectorAll(".logo-choice");
+    const mainText = document.getElementById("main-text");
+    const secondaryText = document.getElementById("secondary-text");
 
-      points.forEach(point=>{
-        const target = point.getAttribute('data-target');
-        const btn = point.querySelector('button');
-        if(!target || !btn) return;
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const key = button.dataset.target;
 
-        btn.addEventListener('click', ()=>{
-          // UA também deve abrir cards (não navega)
-          setActiveEntity(target);
+        buttons.forEach((btn) => {
+          btn.setAttribute("aria-pressed", "false");
         });
+
+        button.setAttribute("aria-pressed", "true");
+        mainText.textContent = data[key].main;
+        secondaryText.textContent = data[key].secondary;
       });
-    })();
+    });
   </script>
 </body>
 </html>
+
+<style>
+  /* sem background nos botões; estado único é opacity */
+.logo-choice[aria-pressed="true"]{ opacity: 1; }
+  .logo-choice[aria-pressed="false"]{ opacity: 0.25; }
+
+  .logo-choice:hover,
+  .logo-choice:focus-visible {
+    background: transparent;
+    border-color: transparent;
+    transform: none;
+    opacity: 1;
+  }
+</style>
+
 
 

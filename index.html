@@ -1,83 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portefólio Tiago - Sobre</title>
-  <meta name="description" content="Portefólio Tiago - Sobre">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style-scene-cards-2-fixed.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiago Duarte Costa — Index</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip-link" href="#mainContent">Saltar para o conteúdo</a>
-  <div class="page-background" aria-hidden="true"></div>
+  <div class="page">
 
-  <header class="site-header">
-    <a href="./sobre.html" class="brand-mark" aria-label="Portefólio Tiago" data-fullname="Tiago Duarte Costa">Tiago Duarte Costa</a>
-  </header>
-
-  <main id="mainContent" class="experience-shell">
-    <div class="road-stage">
-      <div class="scene-layer" aria-hidden="true"><div class="scene-debug-line"></div></div>
-
-      <div class="car-lane" aria-hidden="true">
-        <div id="carWrapper" class="car-wrapper">
-          <img id="carImage" class="car-image" src="./car-on.gif" alt="Carro">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="site-logo" aria-label="Logo">
+          <!-- meter logo aqui -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </div>
+        <p class="site-name">Tiago Duarte Costa</p>
       </div>
+    </header>
 
-      <section id="sobre" class="panel panel--ghost" aria-label="Sobre">
-        <div class="percurso-layout sobre-layout" aria-label="Conteúdo Sobre">
-          <h1 class="percurso-title">Portefólio</h1>
-          <div class="percurso-subtitle">na estrada com Tiago Duarte Costa</div>
+    <section class="hero">
+      <div class="hero__inner">
+        <h2>Comunicação, e Direção Criativa.</h2>
+        <p></p>
+      </div>
+    </section>
 
-          <div class="projetos-grid sobre-grid" aria-live="polite">
-            <article class="projetos-card projetos-card--left" aria-label="Descrição sobre (esquerda)">
-              <div class="projetos-detail-card">
-                <div class="projetos-detail-item is-active" data-projeto-detail="sobre-left">
-                  <h3>Comunicação</h3>
-                  <p>Storytelling, produção e direção de arte com foco em narrativa visual e consistência de marca.</p>
-                </div>
-              </div>
-            </article>
+    <main class="cards-section">
+      <div class="cards-section__inner">
+        <section class="cards-grid">
 
-            <article class="projetos-card projetos-card--center" aria-label="Resumo sobre (centro)">
-              <div class="road-card-inner">
-                <p class="eyebrow"></p>
+          <article class="card">
+            <div class="card__content">
+              <h2>Visão</h2>
+              <p>Desenvolvo projetos com atenção à mensagem, à estética e à forma como cada detalhe comunica.</p>
+            </div>
+          </article>
 
-              </div>
-            </article>
+          <article class="card">
+            <div class="card__content">
+              <h2>Áreas</h2>
+              <p>Trabalho entre comunicação, audiovisual, fotografia, vídeo e construção de presença visual consistente.</p>
+            </div>
+          </article>
 
-            <article class="projetos-card projetos-card--right" aria-label="Texto sobre (direita)">
-              <div class="projetos-bottom-nav" aria-label="Conteúdo sobre">
-                <div class="projetos-detail-item is-active" data-projeto-detail="sobre-right">
-                  <h2>Tiago Duarte Costa</h2>
-                  <p class="scene-copy">Especialista em Comunicação com background em multimédia e tecnologias da comunicação.</p>
-                  <p class="scene-copy">Apaixonado por tecnologia, cultura portuguesa e criação de conteúdos audiovisuais.</p>
-                  <p>Fiz uma pausa na carreira como Comercial no Setor Automóvel para regressar aos estudos e reforçar a base em criação de conteúdo.</p>
-                  <p class="scene-copy">Procuro novos desafios nas áreas de comunicação de marca, chefia de vendas ou comercial de automóveis premium.</p>
-                </div>
-              </div>
-            </article>
-          </div>
+          <article class="card">
+            <div class="card__content">
+              <h2>Contacto</h2>
+              <p>Disponível para apresentar trabalho, colaborar em projetos e criar soluções com identidade própria.</p>
+            </div>
+          </article>
+
+        </section>
+      </div>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <div class="bottom-nav__inner">
+
+        <div class="bottom-nav__side bottom-nav__side--left is-hidden">
+          <a href="index.html">Voltar Atrás</a>
         </div>
-      </section>
 
-    </div>
-  </main>
+        <div class="bottom-nav__center">
+          <a href="index.html" class="is-active">Início</a>
+          <a href="percurso.html">Percurso</a>
+          <a href="projetos.html">Projetos</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
 
+        <div class="bottom-nav__side bottom-nav__side--right">
+          <a href="percurso.html">Continuar Viagem</a>
+        </div>
 
-  <nav class="bottom-nav" aria-label="Início">
-    <a data-active="#sobre" href="./index.html" class="is-active">Sobre</a>
+      </div>
+    </nav>
 
-    <a data-active="#percurso" href="./percurso.html">Percurso</a>
-    <a data-active="#projetos" href="./projetos.html">Projetos</a>
-    <a data-active="#contacto" href="./contacto.html">Contacto</a>
-  </nav>
-
-  <script src="./shell-car-nav.js" defer></script>
+  </div>
 </body>
 </html>
-

@@ -1,0 +1,58 @@
+{
+  "type": "numbered-jpgs",
+  "basePath": "./fotosjangada/",
+  "images": [
+    {
+      "file": "1.jpg",
+      "title": "Fotografia 1",
+      "description": "(preencher)"
+    },
+    {
+      "file": "2.jpg",
+      "title": "Fotografia 2",
+      "description": "(preencher)"
+    },
+    {
+      "file": "3.jpg",
+      "title": "Fotografia 3",
+      "description": "(preencher)"
+    },
+    {
+      "file": "4.jpg",
+      "title": "Fotografia 4",
+      "description": "(preencher)"
+    },
+    {
+      "file": "6.jpg",
+      "title": "Fotografia 6",
+      "description": "(preencher)"
+    },
+    {
+      "file": "7.jpg",
+      "title": "Fotografia 7",
+      "description": "(preencher)"
+    },
+    {
+      "file": "8.jpg",
+      "title": "Fotografia 8",
+      "description": "(preencher)"
+    },
+    {
+      "file": "9.jpg",
+      "title": "Fotografia 9",
+      "description": "(preencher)"
+    },
+    {
+      "file": "10.jpg",
+      "title": "Fotografia 10",
+      "description": "(preencher)"
+    },
+    {
+      "file": "11.jpg",
+      "title": "Fotografia 11",
+      "description": "(preencher)"
+    }
+  ]
+}
+
+

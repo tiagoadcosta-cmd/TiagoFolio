@@ -1,18 +1,16 @@
-# TODO - cards 3 colunas
+# TODO
 
-## Feito
-- (ver histórico) mudanças em `shell-car-nav.js` para testar eliminação do carro
+- [x] Ajustar `style-scene-cards-2-fixed.css` para o `#percurso` remover regras que “forçam” cards/grid a ocupar 100% da largura sem margens.
 
-## A fazer (agora)
-- [ ] `index.html`: adicionar section full-width (título/subtítulo) + trocar o layout para 3 cards no meio (esq/centro/dir) igual a `projetos.html`.
-- [ ] `contacto.html`: adicionar section full-width (título/subtítulo) + trocar o layout para 3 cards no meio (esq/centro/dir) igual a `projetos.html`.
-- [ ] `percurso.html`: trocar o layout para 3 cards no meio (esq=matecanigas, centro=toyota, dir=+detalhes) mantendo o comportamento atual (matecanigas/toyota/mais detalhes).
-- [ ] `percurso.html`: remover dependência do layout antigo e garantir consistência do grid 3-colunas.
+- [x] Garantir que no `#percurso` existe “margem saudável” semelhante a `index`/`projetos` (sem forçar padding excessivo).
 
-- [ ] `style-scene-cards-2-fixed.css`: criar/refatorar estilos genéricos para `#sobre/#contacto/#percurso` usando o mesmo padrão de grid de `#projetos`.
-- [ ] Limpar qualquer lógica/seletores no CSS/HTML que pertençam ao sistema horizontal de scroll (index/panels) e que não seja necessário nas 4 páginas.
+- [x] Ajustar altura do `#percurso .projetos-card` para ser escalável: trocar `height: calc(100vh - ...)` por `min-height`/`max-height` e garantir flex com `min-height:0` onde necessário.
 
-## Teste
-- [ ] validar desktop e mobile (<=900px, <=768px e <=480px) para não quebrar.
+- [x] Verificar overflow: permitir que o conteúdo interno se acomode sem cortar em ecrãs pequenos.
+
+- [ ] Testar manualmente `percurso.html` em ecrãs pequenos/altos (mobile e altura curta). ✅
+- [x] Aplicar o mesmo tratamento ao `contacto.html` (stack em mobile + margens + altura escalonável).
+
+
 
 

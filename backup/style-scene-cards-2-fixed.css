@@ -1,4 +1,4 @@
-:root{--text-xs:clamp(.75rem,.7rem + .25vw,.875rem);--text-sm:clamp(.875rem,.8rem + .35vw,1rem);--text-base:clamp(1rem,.95rem + .25vw,1.125rem);--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--color-bg:#0f1012;--color-text:#f3f4f6;--color-text-muted:#b0b5bc;--color-border:rgba(255,255,255,.1);--radius-full:9999px;--shadow-md:0 12px 32px rgba(0,0,0,.22);--transition-interactive:500ms cubic-bezier(.16,1,.3,1);--font-body:'General Sans',Inter,sans-serif;--font-display:'Cabinet Grotesk',Inter,sans-serif;--scene-baseline:150px;}
+:root{--text-xs:clamp(.62rem,.55rem + .25vw,.78rem);--text-sm:clamp(.78rem,.72rem + .35vw,.95rem);--text-base:clamp(.88rem,.84rem + .25vw,1.05rem);--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--color-bg:#0f1012;--color-text:#f3f4f6;--color-text-muted:#b0b5bc;--color-border:rgba(255,255,255,.1);--radius-full:9999px;--shadow-md:0 12px 32px rgba(0,0,0,.22);--transition-interactive:500ms cubic-bezier(.16,1,.3,1);--font-body:'General Sans',Inter,sans-serif;--font-display:'Cabinet Grotesk',Inter,sans-serif;--scene-baseline:150px;}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{min-height:100dvh;height:100dvh;font-family:var(--font-body);font-size:var(--text-base);line-height:1.6;color:var(--color-text);background:var(--color-bg);overflow-x:hidden;overflow-y:hidden}
@@ -70,14 +70,26 @@ a{text-decoration:none;color:inherit}
 .percurso-icons{display:none;}
 .percurso-detail{display:none;}
 
-#percurso .percurso-grid{width:100%;}
-#percurso .projetos-card{
-  min-height:calc(100vh - clamp(4rem,8vh,10vh));
-  height:calc(100vh - clamp(4rem,8vh,10vh));
+#percurso .percurso-grid{
+  width:100%;
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-#percurso .projetos-card--center{padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
-#percurso .road-card-inner{background:transparent;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;}
+#percurso .projetos-card{
+  /* Altura escalável (evita forçar height exata em ecrãs pequenos) */
+  min-height:clamp(360px, calc(100svh - clamp(8rem, 16vh, 14rem)), 720px);
+  height:auto;
+  max-height:calc(100svh - clamp(8rem, 16vh, 14rem));
+}
+
+
+#percurso .projetos-card--center{padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:0;min-width:0;}
+
+
+#percurso .road-card-inner{background:transparent;min-height:0;max-height:100%;display:flex;flex-direction:column;justify-content:flex-end;min-width:0;}
+
 #percurso .percurso-left-actions{
   display:flex;
   flex-direction:row;
@@ -85,7 +97,9 @@ a{text-decoration:none;color:inherit}
   align-items:flex-end;
   gap:clamp(.6rem,1.2vw,1.25rem);
   padding-top:0;
+  min-height:0;
 }
+
 
 
 #percurso .percurso-left-actions .percurso-point{
@@ -148,8 +162,25 @@ a{text-decoration:none;color:inherit}
 #percurso.is-mode-2 .percurso-detail[data-open-target="toyota"]{left:70%;transform:translate(-50%, 10px);}
 
 @media (max-width:768px){
-  /* mobile: empilhar os 3 cards e manter largura controlada */
+  /* mobile: empilhar cards e manter largura controlada */
   .scene-cards-3{grid-template-columns:1fr;gap:0;}
+
+  /* Percurso */
+  #percurso .percurso-grid{
+    max-width:none;
+    margin-left:0;
+    margin-right:0;
+  }
+
+  /* Contacto: garantir que ambos os cards aparecem (center + right) */
+  #contacto .projetos-card{
+    display:flex !important;
+  }
+  #contacto .projetos-card .road-card-inner{
+    display:flex !important;
+  }
+
+
 
   #sobre .road-card,
   #contacto .contacto-card{
@@ -170,23 +201,30 @@ a{text-decoration:none;color:inherit}
     opacity:1;
   }
 
-
-
-
-  /* em telas pequenas queremos o card sempre centrado (sem “left:33% / 70%”) */
-  #percurso.is-mode-1 .percurso-detail[data-open-target="matecanigas"],
-  #percurso.is-mode-2 .percurso-detail[data-open-target="matecanigas"],
-  #percurso.is-mode-1 .percurso-detail[data-open-target="toyota"],
-  #percurso.is-mode-2 .percurso-detail[data-open-target="toyota"]{
-    left:50%;
-    transform:translate(-50%, 10px);
+  /* percuso.html: os cards não devem ser empurrados para fora do viewport.
+     Força o mesmo alinhamento do index (sobre-grid) e cancela o “right:clamp(...)” do .road-card base.
+  */
+  #percurso .road-card{
+    right:auto !important;
+    left:50% !important;
+    transform:translateX(-50%) translateY(18px) scale(.98) !important;
+    opacity:1 !important;
   }
 
-  /* evitar que o overlay desça demais */
+  #percurso .road-card.is-visible{
+    transform:translateX(-50%) translateY(0) scale(1) !important;
+    opacity:1 !important;
+  }
+
+  /* Neutraliza regras antigas que usavam `.percurso-detail` (não existe no markup atual) */
   #percurso .percurso-detail{
-    top:44vh;
+    top:unset !important;
+    left:unset !important;
+    right:unset !important;
+    transform:none !important;
   }
 }
+
 
 
 
@@ -209,7 +247,8 @@ a{text-decoration:none;color:inherit}
 #percurso.is-mode-1 .percurso-point[data-target="matecanigas"] .percurso-icon,
 #percurso.is-mode-2 .percurso-point[data-target="toyota"] .percurso-icon{filter:none;opacity:1;}
 
-.percurso-icon{width:138px;height:138px;border-radius:9999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);overflow:hidden;padding:0;cursor:pointer;}
+.percurso-icon{width:138px;height:138px;border-radius:9999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);overflow:hidden;padding:0;cursor:pointer;display:grid;place-items:center;}
+
 .percurso-icon img{width:100%;height:100%;object-fit:cover;display:block;}
 
 /* ===== Projetos: 3 cards centrais, media grande 16:9 ===== */
@@ -228,6 +267,15 @@ a{text-decoration:none;color:inherit}
   align-items:stretch;
 }
 
+/* Index (Sobre): apenas 2 cards centrados */
+#sobre .sobre-grid{
+  grid-template-columns:minmax(560px,1.7fr) minmax(420px,1.3fr);
+  justify-content:center;
+  align-items:stretch;
+}
+
+#sobre .projetos-card--left{display:none;}
+
 #projetos .projetos-card{
   border:none;
   border-radius:0;
@@ -242,13 +290,14 @@ a{text-decoration:none;color:inherit}
 #projetos .projetos-card--right{background:rgba(0,180,255,.12);}
 #projetos .projetos-card--center{background:rgba(140,255,0,.10);}
 
-/* texto em todos os cards (top-left) */
+/* alinhamento padrão (evitar forçar left em todo o grid) */
 #projetos .projetos-card,
 #sobre .projetos-card,
 #contacto .projetos-card,
 #percurso .projetos-card{
-  text-align:left;
+  text-align:inherit;
 }
+
 
 /* Top-left apenas para conteúdo textual (h2/h3/p e variantes) */
 #projetos .projetos-card h2,
@@ -283,9 +332,9 @@ a{text-decoration:none;color:inherit}
 #percurso .projetos-card--center{background:rgba(140,255,0,.10);}
 #percurso .projetos-card--right{background:rgba(0,180,255,.12);}
 
-#contacto .projetos-card--left{background:rgba(255,0,80,.12);}
 #contacto .projetos-card--center{background:rgba(140,255,0,.10);}
 #contacto .projetos-card--right{background:rgba(0,180,255,.12);}
+
 
 
 
@@ -304,10 +353,23 @@ a{text-decoration:none;color:inherit}
 }
 #projetos .projetos-card--center{padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
 
-/* Projetos: botões anterior/seguinte abaixo do texto no card esquerdo (e pequeno) */
+/* Projetos: botões anterior/seguinte (no card esquerdo) */
+/* Nota: #projetos .projetos-card--right é escondido apenas nas páginas de Projetos.
+   No Contacto queremos mostrar o card right com os botões. */
 #projetos .projetos-card--right{
   display:none;
 }
+
+/* No Contacto queremos mostrar o card right (botões) */
+#contacto .projetos-card--right{
+  display:flex;
+  flex-direction:column;
+  padding:0 !important;
+  align-items:stretch;
+}
+
+
+
 
 #projetos .projetos-card--left .projetos-bottom-nav{
   display:flex;
@@ -318,11 +380,38 @@ a{text-decoration:none;color:inherit}
   gap:.75rem;
 }
 
+/* prev/next no topo do card esquerdo */
+#projetos .projetos-bottom-nav--left-top{
+  order:0;
+  margin-top:0.6rem;
+  margin-bottom:.9rem;
+  padding:0.75rem 0 0;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  left:0;
+  right:0;
+}
+
+
+
+
 
 #projetos .projetos-card--left .projetos-nav-btn{
   width:46px;
   height:46px;
 }
+
+/* garantir botões (prev/next) alinhados horizontalmente no topo do card esquerdo */
+#projetos .projetos-card--left .projetos-bottom-nav{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  gap:.75rem;
+}
+
+
 
 
 
@@ -528,13 +617,25 @@ a{text-decoration:none;color:inherit}
   #percurso .percurso-icons{display:flex;flex-direction:row;justify-content:center;align-items:flex-end;gap:1.2rem;}
   #percurso .percurso-point{width:auto;}
 
-  /* empilhar cards left/center/right (como “projetos” em mobile) */
+  /* empilhar cards (como “projetos” em mobile) */
   #sobre .projetos-grid,
   #contacto .projetos-grid,
   #percurso .percurso-grid{
     grid-template-columns:1fr;
     gap:.8rem;
+    align-items:stretch;
   }
+
+
+  /* contacto: empilhar em coluna (em vez de alinhar horizontalmente) */
+  #contacto .projetos-card--center{order:1;}
+  #contacto .projetos-card--right{order:2;}
+
+  #contacto .projetos-grid{
+    margin-left:0;
+    margin-right:0;
+  }
+
 
 
   #sobre .projetos-card--left{order:1;justify-content:flex-start;}
@@ -542,8 +643,9 @@ a{text-decoration:none;color:inherit}
   #sobre .projetos-card--right{order:3;}
 
   #contacto .projetos-card--left{order:1;justify-content:flex-start;}
-  #contacto .projetos-card--center{order:2;}
-  #contacto .projetos-card--right{order:3;}
+  #contacto .projetos-card--center{order:1;}
+  #contacto .projetos-card--right{order:2;}
+
 
   #percurso .projetos-card--left{order:1;}
   #percurso .projetos-card--center{order:2;}
@@ -628,94 +730,81 @@ p{margin:0;color:#ffffff;max-width:64ch}
 .bottom-nav{position:fixed;left:50%;bottom:.75rem;transform:translateX(-50%);z-index:20;display:flex;gap:var(--space-6);flex-wrap:wrap;justify-content:center;padding:0;margin-top:0;background:transparent;border:none;border-radius:0;backdrop-filter:none;max-width:calc(100vw - 1.5rem);width:auto}
 .bottom-nav a{display:inline-flex;align-items:center;justify-content:center;padding:0;border-radius:0;color:var(--color-text-muted);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;text-align:center;line-height:1.2;min-width:0;}
 .bottom-nav a.is-active,.bottom-nav a:hover{color:var(--color-text);background:transparent}
-/* ===== Contacto ===== */
-#contacto .contacto-layout{
-  position:relative;
-  min-height:100%;
-  display:block;
-}
-#contacto .contacto-card{
-  width:min(700px,78vw);
-  margin:clamp(2rem,8vh,5rem) 0 0 auto;
-  right:auto;
-  left:auto;
-}
-#contacto .contacto-card .road-card-inner{
-  min-height:360px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-#contacto .contacto-bottom-links{
-  margin-top:2rem;
+/* ===== Contacto (simplificado: só botões em linha) ===== */
+#contacto .contacto-layout{position:relative;min-height:100%;display:block;}
+#contacto .contacto-grid{max-width:1200px;margin-left:auto;margin-right:auto;}
+#contacto .contacto-card{width:min(700px,78vw);margin:clamp(2rem,8vh,5rem) auto 0 auto;right:auto;left:auto;transform:none;}
+#contacto .contacto-card .road-card-inner{min-height:360px;display:flex;flex-direction:column;justify-content:space-between;}
+#contacto .contacto-grid{grid-template-columns:minmax(740px,2.6fr) minmax(220px,1fr);justify-content:center;}
+#contacto .projetos-card--center{padding:0;}
+
+/* Wrapper ÚNICO para os botões (Instagram/LinkedIn/CV) */
+#contacto .contacto-social-row{
   width:100%;
   display:flex;
+  flex-direction:row;
   align-items:center;
   justify-content:center;
-  gap:1.2rem;
+  gap:clamp(.35rem,.9vw,.7rem);
+  flex-wrap:nowrap;
+  max-width:100%;
+  overflow:hidden;
+  padding:clamp(.35rem,.8vh,.65rem) 0;
 }
-#contacto .contacto-icon-link{
-  width:86px;
-  height:86px;
+
+
+#contacto .contacto-social-row > a{
+  flex:0 0 auto;
+  width:clamp(44px, 6.5vw, 74px);
+  height:clamp(44px, 6.5vw, 74px);
   display:grid;
   place-items:center;
-  border:none;
-  background:transparent;
-  padding:0;
 }
-#contacto .contacto-icon-link img{
+
+#contacto .contacto-social-row > a img{
   width:100%;
   height:100%;
   object-fit:contain;
   display:block;
 }
 
-
 @media (max-width:900px){
   .page-background{background-size:auto;background-position:center}
+  #contacto .projetos-card{min-height:clamp(300px, calc(100svh - clamp(8rem, 16vh, 14rem)), 700px);height:auto;max-height:calc(100svh - clamp(8rem, 16vh, 14rem));}
   .car-wrapper{width:min(160px,36vw);bottom:0;left:clamp(1rem,6vw,2.5rem)}
   .road-card{width:min(90vw,700px);right:1rem;left:auto;display:none}
-  #contacto .contacto-card{display:block;width:min(90vw,700px);right:1rem;left:auto}
-  #contacto .contacto-bottom-links{bottom:calc(2.5rem + 2.4rem);gap:1rem}
-  #contacto .contacto-icon-link{width:74px;height:74px}
+  #contacto .projetos-card{display:flex;}
+  #contacto .projetos-card .road-card-inner{display:flex;}
+  #contacto .contacto-card{display:block;width:min(90vw,700px);right:auto;left:50%;transform:translateX(-50%) !important;}
   .panel{padding:10vh 1rem}
   .bottom-nav{gap:1.25rem;bottom:.85rem;max-width:calc(100vw - 2rem)}
   .bottom-nav a{font-size:.9rem}
+  #contacto .contacto-social-row{gap:clamp(.5rem,1vw,1rem)}
 }
+
 @media (max-width:640px){
   .car-wrapper{width:min(110px,26vw);bottom:0;left:1.25rem}
   .panel{height:100svh;min-height:100svh;}
-
-  #contacto .contacto-icon-link{width:66px;height:66px}
   .panel{padding:10vh .75rem}
   .bottom-nav{gap:1rem;bottom:.75rem;max-width:calc(100vw - 1.5rem)}
   .bottom-nav a{font-size:.85rem}
+  #contacto .contacto-social-row > a{width:clamp(24px, 6vw, 44px);height:clamp(24px, 6vw, 44px)}
+
 }
+
 @media (max-width:480px){
   .car-wrapper{width:min(110px,42vw);bottom:0;left:1rem}
   .panel{height:100svh;min-height:100svh;}
-
   .panel{padding:9vh .75rem}
-  .road-card{width:min(96vw,600px);right:.75rem;display:none}
-  #contacto .contacto-card{display:block;width:min(96vw,600px);right:.75rem;left:auto}
-  #contacto .contacto-bottom-links{bottom:calc(2.5rem + 2.1rem);gap:.8rem}
-  #contacto .contacto-icon-link{width:58px;height:58px}
+  .road-card{width:min(96vw,600px);display:none;right:auto;left:50%;transform:translateX(-50%) !important;}
+  #contacto .contacto-card{display:block;width:min(96vw,600px);right:auto;left:50%;transform:translateX(-50%) !important;}
+  .bottom-nav{gap:.65rem;bottom:.65rem;max-width:calc(100vw - 1rem);flex-wrap:nowrap;white-space:nowrap;overflow:hidden}
+  .bottom-nav a{font-size:.78rem;white-space:nowrap;flex:0 0 auto;line-height:1;}
+  #contacto .contacto-social-row{padding:clamp(.6rem,1.2vh,.95rem) 0;gap:.6rem}
+  #contacto .contacto-social-row > a{width:clamp(20px, 8vw, 34px);height:clamp(20px, 8vw, 34px)}
 
-  /* Navegação: impedir quebra para 2 linhas em 375px */
-  .bottom-nav{
-    gap:.65rem;
-    bottom:.65rem;
-    max-width:calc(100vw - 1rem);
-    flex-wrap:nowrap;
-    white-space:nowrap;
-    overflow:hidden;
-  }
-  .bottom-nav a{
-    font-size:.78rem;
-    white-space:nowrap;
-    flex:0 0 auto;
-    line-height:1;
-  }
+
 }
+
 
 

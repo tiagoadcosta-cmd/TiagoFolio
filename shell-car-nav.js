@@ -115,6 +115,10 @@
         const href = link.getAttribute('href');
         if (!href || href.startsWith('#')) return; // ignora anchors
 
+        // requisito: só anima quando clicar em percurso.html / percurso
+        const shouldAnimate = shouldAnimateForPercursoHref(href);
+        if (!shouldAnimate) return;
+
         if (isTransitioning) {
           e.preventDefault();
           return;
@@ -126,13 +130,23 @@
         // animação: carro avança para direita e só depois navega
         setCarMoving('left-to-right');
 
+
+
         (async () => {
-          await animateCarTo(carTravelRightVw, { duration: 650, ease: 'power2.in' });
+          await animateCarTo(carTravelRightVw, { duration: 2000, ease: 'power2.in' });
+
+          // Garantir que pelo menos 1-2 frames foram renderizados antes da troca de página.
+          await new Promise((r) => requestAnimationFrame(() => r()));
+          await new Promise((r) => setTimeout(r, 50));
+
           // Carro pode ficar fora, então troca de página.
           window.location.href = href;
         })();
+
+
       });
     });
+
   }
 
   function setActiveLink() {
@@ -156,14 +170,24 @@
   }
 
 
+  function shouldAnimateForPercursoHref(href) {
+    if (!href) return false;
+    // requisito: só quando clicar em percurso.html (ou variantes com 'percurso')
+    return href.includes('percurso.html') || href.includes('percurso');
+  }
+
   window.addEventListener('load', () => {
     // reset para garantir que cada página começa igual
     if (carWrapper) {
       carWrapper.style.transition = '';
     }
-    initCarOnPageLoad();
+
+    // requisito: este overlay só aparece/anima como transição quando clicar em percurso
+    // então não corremos initCarOnPageLoad() aqui.
+
     initBottomNavTransitions();
     setActiveLink();
   });
 })();
+
 

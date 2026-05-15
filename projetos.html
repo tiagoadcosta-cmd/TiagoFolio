@@ -155,11 +155,15 @@
       padding: var(--space-4);
     }
 
-    .media-stage {
+
+      .media-stage {
       width: 100%;
       max-width: 100%;
       height: 100%;
+      min-height: 0;
       aspect-ratio: auto;
+
+
       border: 1px solid var(--border);
       border-radius: calc(var(--radius) - 4px);
       background: #000;
@@ -168,6 +172,7 @@
       place-items: center;
       position: relative;
     }
+
 
     .media-stage img,
     .media-stage video,
@@ -178,12 +183,15 @@
       border: 0;
     }
 
-.media-stage img,
+    .media-stage img,
     .media-stage video,
     .media-stage iframe {
       object-fit: contain;
       background: #000;
+      max-width: 100%;
+      max-height: 100%;
     }
+
 
     
 
@@ -198,7 +206,18 @@
         grid-template-columns: 1fr;
         grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
       }
+
+      .media-stage {
+        overflow: hidden;
+      }
+
+      .media-stage img,
+      .media-stage video,
+      .media-stage iframe {
+        object-fit: contain;
+      }
     }
+
 
     @media (max-width: 560px) {
       .selector-grid {
@@ -229,8 +248,8 @@
 
     <section class="hero">
       <div class="hero__inner">
-        <h1>Projetos visuais e audiovisuais.</h1>
-        <p>Seleciona uma área para alternar entre fotografia, vídeo, IA e Jangada Filmes.</p>
+        <h2>Projetos Académicos</h2>
+        <p>Clique nos botões para navegar entre as Projetos</p>
       </div>
     </section>
 
@@ -240,12 +259,10 @@
 
           <article class="card">
             <div class="card__content">
-              <h2>Seleção</h2>
-              <p>Escolhe a área que queres explorar e navega pelos conteúdos disponíveis.</p>
             </div>
 
             <div class="project-copy">
-              <p id="project-text">texto sobre fotografia</p>
+              <p id="project-text"></p>
             </div>
 
             <div class="selector-grid">
@@ -292,23 +309,26 @@
     <nav class="bottom-nav" aria-label="Navegação principal">
       <div class="bottom-nav__inner">
 
-        <div class="bottom-nav__side bottom-nav__side--left">
-          <a href="percurso.html">Voltar</a>
-        </div>
+        <div class="bottom-nav__all-links">
+          <div class="bottom-nav__side bottom-nav__side--left">
+            <a href="percurso.html">«-</a>
+          </div>
 
-        <div class="bottom-nav__center">
-          <a href="index.html">Início</a>
-          <a href="percurso.html">Percurso</a>
-          <a href="projetos.html" class="is-active">Projetos</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
+          <div class="bottom-nav__center">
+            <a href="index.html">Início</a>
+            <a href="percurso.html">Percurso</a>
+            <a href="projetos.html" class="is-active">Projetos</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
 
-        <div class="bottom-nav__side bottom-nav__side--right">
-          <a href="contacto.html">Continuar</a>
+          <div class="bottom-nav__side bottom-nav__side--right">
+            <a href="contacto.html">-»</a>
+          </div>
         </div>
 
       </div>
     </nav>
+
 
   </div>
 
@@ -326,28 +346,42 @@
 
     const content = {
       foto: {
-        text: "texto sobre fotografia",
+        text: "Neste conjunto de fotografias exploro composição, imaginando um catálogo de época de uma Honda Vision de 1991",
         type: "images",
         manifest: "fotos-manifest.json"
       },
+
+      // Para videos: agora o texto é específico para cada vídeo (por índice)
       video: {
-        text: "texto sobre video",
         type: "videos",
         items: [
-          "https://www.youtube-nocookie.com/embed/oMchMbfaUkY?rel=0&modestbranding=1&playsinline=1",
-          "https://www.youtube-nocookie.com/embed/6GwcEg-U8kA?rel=0&modestbranding=1&playsinline=1"
+          {
+            src: "https://www.youtube-nocookie.com/embed/oMchMbfaUkY?rel=0&modestbranding=1&playsinline=1",
+            text: "Stop-Motion: Reparação de um Game-Boy, onde exploro o meu hobbie da reparação de consolas e aprendo a fazer vídeos em stop-motion."
+          },
+          {
+            src: "https://www.youtube-nocookie.com/embed/6GwcEg-U8kA?rel=0&modestbranding=1&playsinline=1",
+            text: "Curta-Metragem PEOPLE — Inteiramente escrita, produzida e realizada por mim na Lituância, na qual também atuo como protagonista."
+          }
         ]
       },
+
       ia: {
-        text: "texto sobre ia",
         type: "videos",
         items: [
-          "https://www.youtube-nocookie.com/embed/LzZhZXk4mnc?rel=0&modestbranding=1&playsinline=1",
-          "https://www.youtube-nocookie.com/embed/GDuV3CyHQFk?rel=0&modestbranding=1&playsinline=1"
+          {
+            src: "https://www.youtube-nocookie.com/embed/LzZhZXk4mnc?rel=0&modestbranding=1&playsinline=1",
+            text: "GREY TURISMO: Video-Jogo inspirado em jogos antigos, no qual me desafiei a escrever toda a programação do Jogo com Recurso a IA, para assim desenvolver as minhas capacidades nessa área. Em termos de sonorização, ela foi toda criada por mim em instrumentos dos anos 80."
+          },
+          {
+            src: "https://www.youtube-nocookie.com/embed/GDuV3CyHQFk?rel=0&modestbranding=1&playsinline=1",
+            text: "2330: Curta-Metragem de Ficção Científica produzida em 48 horas onde a IA era obrigatoriamente usada para gerar Imagem e Som. Argumento adaptado do disco 10000 anos depois entre Vénus e Marte, de José Cid"
+          }
         ]
       },
+
       jangada: {
-        text: "texto sobre jangada filmes",
+        text: "Um Documentário de Longa Duração e grande relevância cultural, onde entrevisto alguns dos maiores criativos em Portugal sobre Impacto da Inteligência Artificial na Arte em Portugal. Mais informações na página de Contacto.",
         type: "images",
         manifest: "fotosjangada-manifest.json"
       }
@@ -456,12 +490,22 @@
 
     async function renderProject(projectKey) {
       const selected = content[projectKey];
-      projectText.textContent = selected.text;
       setPressedButton(projectKey);
+
+      // texto: para videos usa o text do item atual (vídeo 1/2), para images usa selected.text
+      if (selected.type !== "videos") {
+        projectText.textContent = selected.text;
+      } else {
+        // para videos: texto vem do item atual (vídeo 1/2)
+        projectText.textContent = selected.items?.[state.currentIndex]?.text || "";
+      }
+
+
 
       let items = [];
 
       if (selected.type === "videos") {
+        // videos: items é uma lista de { src, text }
         items = selected.items;
       } else if (selected.type === "images") {
         items = await getManifestItems(selected.manifest);
@@ -482,8 +526,10 @@
       const currentItem = items[state.currentIndex];
 
       if (selected.type === "videos") {
-        renderVideo(currentItem, selected.text);
+        // currentItem: { src, text }
+        renderVideo(currentItem.src, currentItem.text);
       } else {
+        // imagens: currentItem é src string
         renderImage(currentItem, selected.text);
       }
     }

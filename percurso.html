@@ -97,8 +97,8 @@
 
     <section class="hero">
       <div class="hero__inner">
-        <h1>Percurso académico e profissional.</h1>
-        <p>Uma leitura rápida de experiências e contextos que ajudaram a construir a minha visão em comunicação, imagem e multimédia.</p>
+        <h2>Percurso académico e profissional</h2>
+        <p>Um pequeno resumo das experências que moldaram a minha carreira até aqui.</p>
       </div>
     </section>
 
@@ -108,38 +108,81 @@
 
           <article class="card">
             <div class="card__content">
-              <h2>Contextos</h2>
-              <p>Seleciona um dos três percursos para ver a informação principal e secundária correspondente.</p>
+              <h2>Percurso Profissional</h2>
+              <p>Clique nos botões para conhecer o meu Percurso</p>
             </div>
+
 
             <div class="card__actions card__actions--stack card__actions--stack-no-grid">
               <button class="logo-choice" type="button" data-target="matecanigas" aria-pressed="true" aria-label="Matecanigas">
                 <img src="matecanigas.svg" alt="Matecanigas">
               </button>
 
+
               <button class="logo-choice" type="button" data-target="toyota" aria-pressed="false" aria-label="Toyota">
                 <img src="toyota.svg" alt="Toyota">
               </button>
 
+
               <button class="logo-choice" type="button" data-target="ua" aria-pressed="false" aria-label="Universidade de Aveiro">
                 <img src="ua.svg" alt="UA">
               </button>
+
             </div>
           </article>
 
-          <article class="card">
+          <!-- Cards (conteúdo fixo no HTML). JS apenas mostra/oculta 2 de cada vez -->
+          <article class="card percurso-card percurso-card--matecanigas-main">
             <div class="card__content">
-              <h2>Resumo principal</h2>
-              <p id="main-text">texto principal matecanigas</p>
+              <h2>Matecanigás, Lda - 2008 a 2018</h2>
+              <p>Pequena empresa familiar de comércio de produtos para construção civil e indústria, na qual desempenho funções de atendimento personalizado. É um período de <span class="highlight">grande desenvolvimento pessoal</span>, no qual desenvolvo competências sociais e técnicas numa grande variedade de áreas.</p>
             </div>
           </article>
 
-          <article class="card">
+          <article class="card percurso-card percurso-card--matecanigas-secondary">
             <div class="card__content">
-              <h2>Resumo secundário</h2>
-              <p id="secondary-text">texto secundário matecanigas</p>
+              <h2>Conquistas durante este período</h2>
+              <p>É também um período em que exploro áreas tão diversas como:</p>
+              <p>Restauro Automóvel</p>
+              <p>Restauro e venda de Consolas de Jogos</p>
+              <p>Informática</p>
             </div>
           </article>
+
+          <article class="card percurso-card percurso-card--toyota-main">
+            <div class="card__content">
+              <h2>Toyota - Caetano Auto Lisboa - 2018 a 2021</h2>
+              <p>Período de Grande Realização e Sucesso no qual descubro a minha vocação.</p>
+              <p>Explorando o gosto pela comunicação audiovisual, assumo a <span class="highlight">Gestão de Leads</span> do canal Online, tornando-me especialista em vender automóveis tanto presencialmente como à distância.</p>
+            </div>
+          </article>
+
+          <article class="card percurso-card percurso-card--toyota-secondary">
+            <div class="card__content">
+              <h2>Conquistas na Toyota</h2>
+              <p>Vendedor Revelação de 2019</p>
+              <p><span class="highlight">Melhor Vendedor Nacional Toyota em 2020</span></p>
+              <img src="trophy.png" alt="Prémio Toyota 2020" style="width: 10%; height: auto; margin-top: 0.1rem;">
+            </div>
+          </article>
+
+          <article class="card percurso-card percurso-card--ua-main">
+            <div class="card__content">
+              <h2>Um Novo Desafio - 2021 a 2026</h2>
+              <p>No ínicio de 2021 despeço-me da Toyota para um período de reflexão em que viajo e planeio o meu futuro.</p>
+              <p>Em 2023 ingresso na <span class="highlight">Universidade de Aveiro</span> no curso de Multimédia e Tecnologias de Comunicação, onde evoluo as minhas competências em Multimédia, explorando em especial Storytelling, Direção Criativa e Comunicação Audiovisual.</p>
+            </div>
+          </article>
+
+          <article class="card percurso-card percurso-card--ua-secondary">
+            <div class="card__content">
+              <h2>Conquistas durante este período</h2>
+              <p>Descubro o gosto pela representação, atuando em várias curtas e fazendo trabalhos de publicidade.</p>
+              <p>Desenvolvo projetos de fotografia e vídeo, explorando a minha visão criativa e narrativa.</p>
+              <p>Produzo e Apresento um <span class="highlight">Documentário em que Entrevisto algumas das maiores personalidades em Portugal.</span></p>
+            </div>
+          </article>
+
 
         </section>
       </div>
@@ -148,59 +191,83 @@
     <nav class="bottom-nav" aria-label="Navegação principal">
       <div class="bottom-nav__inner">
 
-        <div class="bottom-nav__side bottom-nav__side--left">
-          <a href="index.html">Voltar</a>
-        </div>
+        <div class="bottom-nav__all-links">
+          <div class="bottom-nav__side bottom-nav__side--left">
+            <a href="index.html">«-</a>
+          </div>
 
-        <div class="bottom-nav__center">
-          <a href="index.html">Início</a>
-          <a href="percurso.html" class="is-active">Percurso</a>
-          <a href="projetos.html">Projetos</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
+          <div class="bottom-nav__center">
+            <a href="index.html">Início</a>
+            <a href="percurso.html" class="is-active">Percurso</a>
+            <a href="projetos.html">Projetos</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
 
-        <div class="bottom-nav__side bottom-nav__side--right">
-          <a href="projetos.html">Continuar</a>
+          <div class="bottom-nav__side bottom-nav__side--right">
+            <a href="projetos.html">-»</a>
+          </div>
         </div>
 
       </div>
     </nav>
 
+
   </div>
 
   <script>
-    const data = {
-      matecanigas: {
-        main: "texto principal matecanigas",
-        secondary: "texto secundário matecanigas"
-      },
-      toyota: {
-        main: "texto principal toyota",
-        secondary: "texto secundário toyota"
-      },
-      ua: {
-        main: "texto principal ua",
-        secondary: "texto secundário ua"
-      }
+    // JS: apenas alterna quais 2 cards estão visíveis (principal + secundário)
+    const buttons = document.querySelectorAll(".logo-choice");
+
+    const mainMap = {
+      matecanigas: document.querySelector(".percurso-card--matecanigas-main"),
+      toyota: document.querySelector(".percurso-card--toyota-main"),
+      ua: document.querySelector(".percurso-card--ua-main"),
     };
 
-    const buttons = document.querySelectorAll(".logo-choice");
-    const mainText = document.getElementById("main-text");
-    const secondaryText = document.getElementById("secondary-text");
+    const secondaryMap = {
+      matecanigas: document.querySelector(".percurso-card--matecanigas-secondary"),
+      toyota: document.querySelector(".percurso-card--toyota-secondary"),
+      ua: document.querySelector(".percurso-card--ua-secondary"),
+    };
+
+    const allMain = [
+      mainMap.matecanigas,
+      mainMap.toyota,
+      mainMap.ua,
+    ];
+
+    const allSecondary = [
+      secondaryMap.matecanigas,
+      secondaryMap.toyota,
+      secondaryMap.ua,
+    ];
+
+    function setPressedButton(activeKey) {
+      buttons.forEach((btn) => {
+        btn.setAttribute("aria-pressed", btn.dataset.target === activeKey ? "true" : "false");
+      });
+    }
+
+    function showCards(activeKey) {
+      allMain.forEach((el) => (el.style.display = "none"));
+      allSecondary.forEach((el) => (el.style.display = "none"));
+
+      if (mainMap[activeKey]) mainMap[activeKey].style.display = "block";
+      if (secondaryMap[activeKey]) secondaryMap[activeKey].style.display = "block";
+    }
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
         const key = button.dataset.target;
-
-        buttons.forEach((btn) => {
-          btn.setAttribute("aria-pressed", "false");
-        });
-
-        button.setAttribute("aria-pressed", "true");
-        mainText.textContent = data[key].main;
-        secondaryText.textContent = data[key].secondary;
+        setPressedButton(key);
+        showCards(key);
       });
     });
+
+    // Estado inicial: o botão matecanigas já vem aria-pressed="true"
+    const initial = document.querySelector('.logo-choice[aria-pressed="true"]')?.dataset.target || "matecanigas";
+    setPressedButton(initial);
+    showCards(initial);
   </script>
 </body>
 </html>
@@ -209,6 +276,25 @@
   /* sem background nos botões; estado único é opacity */
 .logo-choice[aria-pressed="true"]{ opacity: 1; }
   .logo-choice[aria-pressed="false"]{ opacity: 0.25; }
+
+logo-choice__label{
+  position: absolute;
+  top: -1.25rem;
+
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--nav-size);
+  color: var(--text-muted);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.logo-choice{
+  position: relative;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 
   .logo-choice:hover,
   .logo-choice:focus-visible {

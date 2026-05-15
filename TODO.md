@@ -1,16 +1,8 @@
-# TODO
+# TODO — Fix “foto cropped” em ecra pequeno (Projetos)
 
-- [x] Ajustar `style-scene-cards-2-fixed.css` para o `#percurso` remover regras que “forçam” cards/grid a ocupar 100% da largura sem margens.
-
-- [x] Garantir que no `#percurso` existe “margem saudável” semelhante a `index`/`projetos` (sem forçar padding excessivo).
-
-- [x] Ajustar altura do `#percurso .projetos-card` para ser escalável: trocar `height: calc(100vh - ...)` por `min-height`/`max-height` e garantir flex com `min-height:0` onde necessário.
-
-- [x] Verificar overflow: permitir que o conteúdo interno se acomode sem cortar em ecrãs pequenos.
-
-- [ ] Testar manualmente `percurso.html` em ecrãs pequenos/altos (mobile e altura curta). ✅
-- [x] Aplicar o mesmo tratamento ao `contacto.html` (stack em mobile + margens + altura escalonável).
-
-
-
+- [ ] Ler `projetos.html` e identificar o CSS inline que controla `.media-stage`.
+- [ ] Atualizar CSS em `projetos.html` para que `.media-stage` não dependa de `height: 100%` no mobile (evitar crop por alturas fixas + `overflow:hidden`).
+- [ ] Aplicar `min-height`/`flex`/`height:auto` no breakpoint `max-width: 900px` e/ou `max-width: 560px`.
+- [ ] Garantir que `object-fit: contain` continua ativo.
+- [ ] Validar rapidamente: trocar entre projetos (foto) e verificar se a imagem fica toda visível sem cortar.
 

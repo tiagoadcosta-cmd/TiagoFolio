@@ -106,6 +106,18 @@ p {
   align-items: center;
 }
 
+.site-header__link {
+  width: 100%;
+  display: block;
+  color: inherit;
+}
+
+.site-header__link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
+}
+
+
 .site-header__inner {
   width: min(100%, var(--content-max));
   display: flex;

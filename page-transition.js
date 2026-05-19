@@ -128,6 +128,11 @@
       return;
     }
 
+    // Skip car animation for special links (e.g. external social icons, CV download, etc.)
+    if (link.hasAttribute('data-no-car-transition')) {
+      return;
+    }
+
     // Skip if it's the current page
     const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
     const targetPath = new URL(href, window.location.origin).pathname.replace(/\/$/, '');
